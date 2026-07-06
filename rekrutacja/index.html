@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rekrutacja. To jest proste. — Raport i karta oceny kandydata dla przedsiębiorcy</title>
+  <meta
+    name="description"
+    content="11 kluczowych pytań rekrutacyjnych i gotowa karta oceny kandydata do druku. Dla właścicieli małych firm bez działu HR. Raport PDF, dostęp od razu po zakupie, 47 zł zamiast 67 zł."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#glowna-tresc">Przejdź do treści</a>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="#hero">Rekrutacja. <span>To jest proste.</span></a>
+      <a class="btn btn--primary btn--sm site-header__cta" href="#cennik">Kup za 47 zł</a>
+    </div>
+  </header>
+
+  <main id="glowna-tresc">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero" aria-label="Sekcja powitalna">
+      <div class="hero__glow hero__glow--green" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--gold" aria-hidden="true"></div>
+
+      <div class="container hero__grid">
+        <div class="hero__content reveal">
+          <span class="badge">
+            <span class="badge__dot" aria-hidden="true"></span>
+            Raport dla przedsiębiorcy bez działu HR
+          </span>
+
+          <h1 class="hero__title">
+            Rekrutacja. <span class="hero__highlight">To jest proste.</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            11 pytań, które podczas jednej rozmowy pokażą Ci, czy kandydat
+            naprawdę jest tym, za kogo się podaje — zanim podpiszesz umowę
+            i zanim zapłacisz za czyjś błąd.
+          </p>
+
+          <div class="hero__price-row">
+            <span class="hero__price-old">67 zł</span>
+            <span class="hero__price-new">47 zł</span>
+            <span class="hero__price-badge">Oszczędzasz 20 zł</span>
+          </div>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary magnetic" href="#cennik">Pobierz raport za 47 zł</a>
+            <a class="btn btn--secondary magnetic" href="#pytania">Zobacz przykładowe pytania</a>
+          </div>
+
+          <div class="hero__trust">
+            <div class="trust-item">
+              <span class="trust-item__value">11</span>
+              <span class="trust-item__label">kluczowych pytań</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-item__value">6</span>
+              <span class="trust-item__label">cech dobrego pracownika</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-item__value">2</span>
+              <span class="trust-item__label">gotowe dokumenty PDF</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__mockup reveal">
+          <img
+            class="hero__cover-img"
+            src="assets/img/raport-cover.jpg"
+            alt="Okładka raportu Rekrutacja. To jest proste. — raport dla przedsiębiorcy o zadawaniu właściwych pytań rekrutacyjnych"
+            width="1000"
+            height="1420"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROBLEM / STORY ==================== -->
+    <section class="section section--alt" aria-label="Problem złej rekrutacji">
+      <div class="container story reveal">
+        <p class="story__quote">
+          Zatrudniasz kogoś po jednej sympatycznej rozmowie. Uśmiechnięty,
+          pewny siebie, obiecuje złote góry. Trzy tygodnie później: spóźnienia,
+          wymówki i klient, który już nie wraca. <mark class="bad" style="color:var(--color-red)">Zaczynasz szukać od nowa</mark> —
+          a każdy kolejny dzień zwłoki to koszt, który płacisz Ty, nie
+          żadna agencja rekrutacyjna.
+        </p>
+        <p class="story__body">
+          Badania firm zajmujących się rekrutacją pokazują, że aż
+          <strong>75% firm</strong> choć raz w swojej historii zatrudniło
+          niewłaściwą osobę, a koszt takiej pomyłki to zwykle
+          <strong>3-4 razy roczne wynagrodzenie</strong> tej osoby (SHRM, 2024).
+          W małej firmie taki błąd boli podwójnie — nie masz działu HR, który
+          to naprawi, a jedna słaba osoba potrafi zepsuć pracę całego zespołu.
+        </p>
+        <p class="story__body">
+          Nie potrzebujesz kursu psychologii ani stu przypadkowych pytań
+          z internetu. Potrzebujesz kilkunastu właściwych pytań i sposobu,
+          żeby zauważyć czerwoną flagę, zanim będzie za późno.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== STATYSTYKI / AUTORYTET ==================== -->
+    <section class="section section--navy" aria-label="Dane i badania">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">To nie jest przypuszczenie</span>
+          <h2 class="section__title">Metoda, na której opierają się największe firmy rekrutacyjne świata</h2>
+        </div>
+
+        <div class="stats-grid reveal">
+          <div class="stat">
+            <div class="stat__value">75%</div>
+            <p class="stat__label">firm choć raz zatrudniło niewłaściwą osobę</p>
+            <span class="stat__source">SHRM, 2024</span>
+          </div>
+          <div class="stat">
+            <div class="stat__value">3-4×</div>
+            <p class="stat__label">roczna pensja to koszt jednej złej rekrutacji</p>
+            <span class="stat__source">SHRM, 2024</span>
+          </div>
+          <div class="stat">
+            <div class="stat__value">87%</div>
+            <p class="stat__label">pracodawców opiera ocenę na pytaniach o konkretne zachowania</p>
+            <span class="stat__source">dane branżowe, cyt. w raporcie</span>
+          </div>
+          <div class="stat">
+            <div class="stat__value">S-T-A-R</div>
+            <p class="stat__label">metoda rozmów ustrukturyzowanych, tej samej co w Google</p>
+            <span class="stat__source">Schmidt &amp; Hunter, replikacja 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== OFERTA ==================== -->
+    <section class="section" id="oferta" aria-label="Co znajdziesz w pakiecie">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Co dostajesz</span>
+          <h2 class="section__title">Dwa dokumenty. Zero zgadywania na następnej rozmowie</h2>
+          <p class="section__subtitle">
+            Jeden komplet, który otwierasz przed każdą rozmową kwalifikacyjną
+            i wypełniasz w jej trakcie.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card reveal">
+            <div class="card__mockup">
+              <img src="assets/img/raport-cover.jpg" alt="Okładka raportu Rekrutacja. To jest proste." loading="lazy" />
+            </div>
+            <h3 class="card__title">Raport: 11 pytań rekrutacyjnych</h3>
+            <p class="card__desc">
+              9 stron konkretu, bez lania wody. Każde pytanie sprawdza jedną
+              z sześciu cech dobrego pracownika.
+            </p>
+            <ul class="card__list">
+              <li>11 pytań pogrupowanych wg 6 cech: odpowiedzialność, konkretność, pracowitość, kompetencje, utożsamienie z firmą, uczciwość</li>
+              <li>Przy każdym pytaniu: dlaczego je zadać, co oznacza odpowiedź, zielona i czerwona flaga</li>
+              <li>Metoda S-T-A-R, na której opierają się rozmowy w dużych korporacjach</li>
+              <li>Lista pytań, których lepiej nie zadawać, żeby nie narazić firmy na ryzyko prawne</li>
+              <li>Wskazówki, jak sprawdzać referencje i ustalać okres próbny</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__mockup">
+              <img src="assets/img/karta-mockup.png" alt="Karta oceny kandydata do druku, formularz z pytaniami i skalą ocen" loading="lazy" />
+            </div>
+            <h3 class="card__title">Karta oceny kandydata (do druku)</h3>
+            <p class="card__desc">
+              Gotowy formularz, który wypełniasz podczas rozmowy — zamiast
+              polegać na pamięci po piątej rozmowie tego dnia.
+            </p>
+            <ul class="card__list">
+              <li>Checklista przygotowania przed rozmową</li>
+              <li>Miejsce na notatkę i ocenę 1-5 przy każdym z 11 pytań</li>
+              <li>Zaznaczanie zielonej i czerwonej flagi na bieżąco</li>
+              <li>Sekcja obserwacji zachowania kandydata</li>
+              <li>Podsumowanie punktowe i jasna rekomendacja: zatrudnić, dopytać czy odrzucić</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PRZYKŁADOWE PYTANIA ==================== -->
+    <section class="section section--alt" id="pytania" aria-label="Przykładowe pytania z raportu">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Zajrzyj do środka</span>
+          <h2 class="section__title">4 z 11 pytań — zobacz, o co naprawdę pytasz</h2>
+          <p class="section__subtitle">
+            Każde pytanie w raporcie ma dokładnie taki układ: pytanie,
+            dlaczego je zadać, i sygnały, na które warto zwrócić uwagę.
+          </p>
+        </div>
+
+        <div class="accordion reveal">
+          <div class="accordion-item is-active">
+            <button class="accordion-item__header" aria-expanded="true">
+              <span class="accordion-item__title-wrap">
+                <span class="accordion-item__number">Odpowiedzialność</span>
+                <span class="accordion-item__title">„Opowiedz mi o sytuacji, w której popełniłeś błąd w pracy. Co zrobiłeś dalej?”</span>
+              </span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  Liczy się nie sam błąd — każdy je popełnia — tylko to, co
+                  było dalej: czy kandydat naprawił sytuację, poinformował
+                  o niej i wyciągnął wnioski.
+                </p>
+                <div class="flags">
+                  <div class="flag flag--green">
+                    <span class="flag__label">Zielona flaga</span>
+                    Mówi wprost „to był mój błąd”, opisuje konkretną naprawę i wnioski.
+                  </div>
+                  <div class="flag flag--red">
+                    <span class="flag__label">Czerwona flaga</span>
+                    Twierdzi, że nigdy nie popełnia błędów, albo obwinia innych.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__header" aria-expanded="false">
+              <span class="accordion-item__title-wrap">
+                <span class="accordion-item__number">Konkretność</span>
+                <span class="accordion-item__title">„Opisz swój typowy dzień pracy na ostatnim stanowisku — krok po kroku.”</span>
+              </span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  Liczy się poziom szczegółu: godziny, narzędzia, konkretne
+                  czynności. Brak szczegółów często oznacza, że doświadczenie
+                  jest mniejsze, niż sugeruje CV.
+                </p>
+                <div class="flags">
+                  <div class="flag flag--green">
+                    <span class="flag__label">Zielona flaga</span>
+                    Opisuje konkretne czynności, narzędzia, przybliżone liczby.
+                  </div>
+                  <div class="flag flag--red">
+                    <span class="flag__label">Czerwona flaga</span>
+                    „Robiłem różne rzeczy” — bez konkretów, mimo dopytywania.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__header" aria-expanded="false">
+              <span class="accordion-item__title-wrap">
+                <span class="accordion-item__number">Pracowitość</span>
+                <span class="accordion-item__title">„Jak wygląda Twój dzień, gdy nikt nie kontroluje na bieżąco tego, co robisz?”</span>
+              </span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  Sprawdza samodyscyplinę. Dobry pracownik pracuje tak samo,
+                  gdy nikt nie patrzy, jak wtedy, gdy szef stoi obok.
+                </p>
+                <div class="flags">
+                  <div class="flag flag--green">
+                    <span class="flag__label">Zielona flaga</span>
+                    Opisuje konkretny plan dnia i priorytety bez czekania na polecenia.
+                  </div>
+                  <div class="flag flag--red">
+                    <span class="flag__label">Czerwona flaga</span>
+                    Sugeruje, że bez nadzoru pracuje wolniej albo czeka na instrukcje.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__header" aria-expanded="false">
+              <span class="accordion-item__title-wrap">
+                <span class="accordion-item__number">Uczciwość</span>
+                <span class="accordion-item__title">„Zauważyłeś kiedyś, że kolega z pracy robi coś nie tak? Co wtedy zrobiłeś?”</span>
+              </span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  Nie chodzi o donosicielstwo, tylko o to, czy kandydat ma
+                  jasne poczucie, co jest w porządku, a co nie.
+                </p>
+                <div class="flags">
+                  <div class="flag flag--green">
+                    <span class="flag__label">Zielona flaga</span>
+                    Mówi wprost, że zareagował, i tłumaczy, dlaczego to było ważne.
+                  </div>
+                  <div class="flag flag--red">
+                    <span class="flag__label">Czerwona flaga</span>
+                    „To nie moja sprawa” albo bagatelizowanie tematu.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== METODA ==================== -->
+    <section class="section" aria-label="Jak korzystać z raportu">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Jak to działa</span>
+          <h2 class="section__title">Od raportu do decyzji o zatrudnieniu w 4 krokach</h2>
+        </div>
+
+        <div class="steps reveal">
+          <div class="step">
+            <span class="step__letter">1</span>
+            <h3 class="step__title">Wybierz pytania</h3>
+            <p class="step__desc">Z 11 pytań wybierz 6-10 pasujących do stanowiska — inne dla magazyniera, inne dla kierownika.</p>
+          </div>
+          <div class="step">
+            <span class="step__letter">2</span>
+            <h3 class="step__title">Zadaj je każdemu tak samo</h3>
+            <p class="step__desc">Te same pytania każdemu kandydatowi na dane stanowisko, żeby uczciwie porównać odpowiedzi.</p>
+          </div>
+          <div class="step">
+            <span class="step__letter">3</span>
+            <h3 class="step__title">Zaznacz flagi na karcie</h3>
+            <p class="step__desc">Podczas rozmowy oceniasz odpowiedź w skali 1-5 i zaznaczasz zieloną lub czerwoną flagę.</p>
+          </div>
+          <div class="step">
+            <span class="step__letter">4</span>
+            <h3 class="step__title">Podejmij decyzję po fakcie</h3>
+            <p class="step__desc">Sumujesz punkty i flagi z karty, decydujesz po rozmowie — nie w jej trakcie, pod wpływem sympatii.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DLA KOGO ==================== -->
+    <section class="section section--alt" aria-label="Dla kogo jest ten raport">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Zanim kupisz</span>
+          <h2 class="section__title">Sprawdź, czy to pasuje do Twojej sytuacji</h2>
+        </div>
+
+        <div class="audience-grid reveal">
+          <div class="audience-card audience-card--yes">
+            <h3>To jest dla Ciebie, jeśli:</h3>
+            <ul>
+              <li>✅ prowadzisz małą firmę i sam/sama rekrutujesz, bez działu HR</li>
+              <li>✅ zatrudniasz pierwszych pracowników albo skalujesz zespół</li>
+              <li>✅ masz sklep, warsztat, biuro, gastronomię lub podobny biznes</li>
+              <li>✅ chcesz konkretnych narzędzi, nie kolejnego kursu teorii</li>
+            </ul>
+          </div>
+          <div class="audience-card audience-card--no">
+            <h3>To niekoniecznie dla Ciebie, jeśli:</h3>
+            <ul>
+              <li>◻ masz już rozbudowany dział HR i systemy ATS</li>
+              <li>◻ szukasz gotowych ogłoszeń o pracę albo wzorów umów</li>
+              <li>◻ szukasz stu gotowych pytań na każdą możliwą okazję</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== O AUTORZE ==================== -->
+    <section class="section about" aria-label="O autorze">
+      <div class="container about__grid reveal">
+        <div class="about__portrait">
+          <img src="assets/img/autor-portret.jpg" alt="Dariusz Wresiło, autor raportu Rekrutacja. To jest proste." loading="lazy" />
+        </div>
+
+        <div class="about__info">
+          <span class="section__eyebrow">Kto stoi za raportem</span>
+          <h2 class="about__name">Dariusz Wresiło</h2>
+          <p class="about__role">Autor raportu „Rekrutacja. To jest proste.”</p>
+          <p class="about__desc">
+            Od lat obserwuje ten sam schemat w małych firmach: właściciel
+            zatrudnia na wyczucie, bo brakuje mu czasu na nic więcej, a kilka
+            tygodni później zaczyna szukanie od nowa. Raport powstał z tych
+            obserwacji i z analizy metod, których używają najwięksi rekruterzy
+            na świecie — przełożonych na język małej firmy, bez działu HR
+            i bez korporacyjnego żargonu.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CENNIK ==================== -->
+    <section class="section section--navy" id="cennik" aria-label="Cennik">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Zainwestuj mniej niż koszt jednej złej rekrutacji</span>
+          <h2 class="section__title">Jeden komplet, dostęp od razu po zakupie</h2>
+        </div>
+
+        <div class="pricing-wrap reveal">
+          <article class="price-card">
+            <span class="price-card__badge">-20 zł dzisiaj</span>
+            <h3 class="price-card__name">Raport + Karta oceny kandydata</h3>
+            <div class="price-card__price-row">
+              <span class="price-card__old">67 zł</span>
+              <span class="price-card__value">47 zł</span>
+            </div>
+            <p class="price-card__period">jednorazowo, bez subskrypcji</p>
+            <ul class="price-card__features">
+              <li>Raport PDF — 11 pytań i 6 cech dobrego pracownika</li>
+              <li>Karta oceny kandydata PDF, gotowa do druku</li>
+              <li>Bez limitu liczby rekrutacji w Twojej firmie</li>
+              <li>Dostęp do pobrania od razu po zaksięgowaniu płatności</li>
+            </ul>
+            <a class="btn btn--primary btn--block magnetic" href="#zakup">Kup teraz za 47 zł</a>
+            <p class="price-card__fineprint">
+              Płatność jednorazowa za treści cyfrowe. Kupując, wyrażasz zgodę
+              na natychmiastowe udostępnienie plików i tym samym rezygnujesz
+              z prawa odstąpienia od umowy po ich pobraniu — szczegóły
+              w <a href="regulamin.html" style="color:rgba(255,255,255,0.75)">regulaminie</a>.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section" id="faq" aria-label="Najczęstsze pytania">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Pytania</span>
+          <h2 class="section__title">Zanim zapytasz, sprawdź tutaj</h2>
+        </div>
+
+        <div class="accordion reveal">
+          <div class="accordion-item is-active">
+            <button class="accordion-item__header" aria-expanded="true">
+              <span class="accordion-item__title">Pierwszy raz zatrudniam pracownika — czy to nie jest zbyt zaawansowane?</span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  Przeciwnie — raport powstał właśnie z myślą o osobach bez
+                  doświadczenia w HR. Każde pytanie ma gotowe wyjaśnienie,
+                  po co je zadać i jak czytać odpowiedź.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__header" aria-expanded="false">
+              <span class="accordion-item__title">Na jakie stanowiska pasują te pytania?</span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  Pytania są uniwersalne — wybierasz 6-10 z 11, które pasują
+                  do konkretnego stanowiska. Inny zestaw sprawdzi się przy
+                  magazynierze, inny przy kierowniku zmiany.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__header" aria-expanded="false">
+              <span class="accordion-item__title">Czy mogę używać raportu przy wielu rekrutacjach?</span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  Tak, bez limitu — w ramach własnej firmy możesz z niego
+                  korzystać przy dowolnej liczbie rozmów. Nie wolno go
+                  odsprzedawać ani publikować w całości lub większych
+                  fragmentach bez zgody autora.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__header" aria-expanded="false">
+              <span class="accordion-item__title">W jakim formacie dostanę materiały i jak szybko?</span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  Dwa pliki PDF — raport i karta oceny do druku. Link do
+                  pobrania dostajesz od razu po zaksięgowaniu płatności,
+                  na adres e-mail podany przy zakupie.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-item__header" aria-expanded="false">
+              <span class="accordion-item__title">Czy mogę dostać zwrot pieniędzy?</span>
+              <span class="accordion-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="accordion-item__content">
+              <div class="accordion-item__content-inner">
+                <p class="accordion-item__body">
+                  To treść cyfrowa dostarczana natychmiast po zakupie, dlatego
+                  zgodnie z ustawą o prawach konsumenta (art. 38 pkt 13)
+                  prawo odstąpienia od umowy nie przysługuje po rozpoczęciu
+                  pobierania plików. Jeśli wystąpi problem techniczny
+                  z dostępem do plików, napisz na
+                  <a href="mailto:kontakt@dariuszwresilo.pl">kontakt@dariuszwresilo.pl</a> — pomożemy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA FINALNE ==================== -->
+    <section class="cta-final section section--navy" aria-label="Ostatnie wezwanie do działania">
+      <div class="container">
+        <div class="reveal">
+          <h2 class="cta-final__title">Następna rozmowa kwalifikacyjna może wyglądać inaczej.</h2>
+          <p class="cta-final__subtitle">
+            Pobierz raport i kartę oceny, i zadaj właściwe pytania jeszcze
+            podczas najbliższej rekrutacji.
+          </p>
+          <a class="btn btn--primary magnetic" href="#cennik">Pobierz komplet za 47 zł</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== STOPKA ==================== -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div>
+        <p class="footer__lead">Napisz do nas</p>
+        <a class="footer__email" href="mailto:kontakt@dariuszwresilo.pl">kontakt@dariuszwresilo.pl</a>
+        <p class="footer__company" style="margin-top:16px;">
+          SkillZen Dariusz Wresiło<br />
+          ul. 3 Maja 32/5, 35-030 Rzeszów<br />
+          NIP 7382034650 · REGON 123122564
+        </p>
+      </div>
+
+      <nav class="footer__links" aria-label="Odnośniki prawne">
+        <a href="regulamin.html">Regulamin</a>
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="mailto:kontakt@dariuszwresilo.pl">Kontakt</a>
+      </nav>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>© 2026 SkillZen Dariusz Wresiło. Wszystkie prawa zastrzeżone.</span>
+      <span>Rekrutacja. To jest proste.</span>
+    </div>
+  </footer>
+
+  <!-- ==================== STICKY MOBILE CTA ==================== -->
+  <div class="sticky-cta" role="complementary" aria-label="Szybki zakup">
+    <span class="sticky-cta__price"><small>67 zł</small>47 zł</span>
+    <a class="btn btn--primary btn--sm" href="#cennik">Kup teraz</a>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

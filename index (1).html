@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inżynieria Umysłu i Świadomości</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --paper:#F6F5F1;
+  --paper-alt:#EEECE4;
+  --graphite:#1E2530;
+  --graphite-soft:#5B6472;
+  --steel:#3E5C76;
+  --steel-soft:#7B93A8;
+  --brass:#AD7C24;
+  --brass-deep:#8C6318;
+  --line: rgba(30,37,48,0.15);
+  --line-strong: rgba(30,37,48,0.28);
+  --radius: 3px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--paper);
+  color:var(--graphite);
+  font-family:'Source Serif 4', Georgia, serif;
+  font-size:1.05rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3, .display{
+  font-family:'Space Grotesk', sans-serif;
+  color:var(--graphite);
+  letter-spacing:-0.01em;
+  line-height:1.1;
+}
+
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  font-size:0.72rem;
+  color:var(--steel);
+  font-weight:500;
+}
+
+a{ color:inherit; text-decoration:none; }
+:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
+
+.wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+/* ---------- NAV ---------- */
+header.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(246,245,241,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 32px;
+  max-width:1180px; margin:0 auto;
+}
+.brandmark{ display:flex; align-items:center; gap:12px; }
+.mark{
+  width:34px; height:34px; background:var(--graphite); color:var(--paper);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Space Grotesk'; font-weight:700; font-size:0.85rem;
+  border-radius:var(--radius);
+}
+.brand-name{ font-family:'Space Grotesk'; font-weight:600; font-size:1.02rem; }
+.brand-name span{ display:block; font-family:'IBM Plex Mono'; font-size:0.62rem; letter-spacing:0.12em; color:var(--graphite-soft); font-weight:400; text-transform:uppercase; margin-top:2px;}
+
+nav.links{ display:flex; align-items:center; gap:30px; }
+nav.links a{ font-family:'IBM Plex Mono'; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--graphite-soft); transition:color .15s; }
+nav.links a:hover{ color:var(--graphite); }
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'IBM Plex Mono'; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em;
+  padding:11px 20px; border-radius:var(--radius); border:1px solid var(--graphite);
+  transition:all .15s;
+}
+.btn-brass{ background:var(--brass); color:var(--paper); border-color:var(--brass); }
+.btn-brass:hover{ background:var(--brass-deep); border-color:var(--brass-deep); }
+.btn-outline{ background:transparent; color:var(--graphite); }
+.btn-outline:hover{ background:var(--graphite); color:var(--paper); }
+
+@media(max-width:860px){ nav.links{ display:none; } }
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative; overflow:hidden;
+  padding:120px 0 90px;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, var(--line) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, var(--line) 40px);
+  background-size:40px 40px;
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+}
+.hero-inner{ position:relative; z-index:2; }
+.hero-grid{ display:grid; grid-template-columns:1.35fr 0.85fr; gap:56px; align-items:center; margin-bottom:48px; }
+@media(max-width:860px){ .hero-grid{ grid-template-columns:1fr; gap:32px; } .hero-photo{ max-width:220px; } }
+.hero h1{ font-size:clamp(2.1rem, 4vw, 3.5rem); margin:18px 0 22px; }
+.hero .lead{ font-size:1.14rem; color:var(--graphite-soft); max-width:560px; margin-bottom:36px; }
+.hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
+.hero-photo .photo-placeholder{ aspect-ratio:4/5; }
+
+.stat-bar{
+  display:flex; gap:0; border-top:1px solid var(--line-strong); padding-top:22px; flex-wrap:wrap;
+}
+.stat{ flex:1; min-width:150px; padding-right:24px; }
+.stat .num{ font-family:'Space Grotesk'; font-weight:700; font-size:1.7rem; color:var(--graphite); }
+.stat .lbl{ font-family:'IBM Plex Mono'; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--graphite-soft); margin-top:4px; }
+
+/* ---------- SECTION SHELL ---------- */
+section{ padding:88px 0; border-bottom:1px solid var(--line); }
+section.alt{ background:var(--paper-alt); }
+.section-head{ max-width:640px; margin-bottom:52px; }
+.section-head h2{ font-size:clamp(1.6rem,2.6vw,2.2rem); margin-top:12px; }
+.section-head p{ color:var(--graphite-soft); margin-top:14px; }
+
+/* ---------- O MNIE ---------- */
+.about-grid{ display:grid; grid-template-columns:300px 1fr; gap:64px; align-items:start; }
+@media(max-width:780px){ .about-grid{ grid-template-columns:1fr; } }
+
+.photo-placeholder{
+  position:relative;
+  aspect-ratio:4/5;
+  border:1px dashed var(--line-strong);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+  color:var(--steel-soft);
+  background:repeating-linear-gradient(135deg, transparent, transparent 8px, rgba(30,37,48,0.03) 8px, rgba(30,37,48,0.03) 16px);
+}
+.photo-placeholder .tick{ position:absolute; width:14px; height:14px; }
+.photo-placeholder .tl{ top:-1px; left:-1px; border-top:2px solid var(--graphite); border-left:2px solid var(--graphite); }
+.photo-placeholder .tr{ top:-1px; right:-1px; border-top:2px solid var(--graphite); border-right:2px solid var(--graphite); }
+.photo-placeholder .bl{ bottom:-1px; left:-1px; border-bottom:2px solid var(--graphite); border-left:2px solid var(--graphite); }
+.photo-placeholder .br{ bottom:-1px; right:-1px; border-bottom:2px solid var(--graphite); border-right:2px solid var(--graphite); }
+.photo-placeholder span{ font-family:'IBM Plex Mono'; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em; }
+
+.about-text p{ margin-bottom:16px; max-width:600px; }
+.about-text .eyebrow{ margin-bottom:14px; display:block; }
+
+/* ---------- MODEL (signature diagram) ---------- */
+.model-diagram{ width:100%; height:auto; margin-top:20px; }
+.node-label{ font-family:'IBM Plex Mono', monospace; }
+.pillars-cap{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px; }
+.pillars-cap div p{ color:var(--graphite-soft); font-size:0.96rem; }
+.pillars-cap h3{ font-size:1rem; margin-bottom:8px; font-family:'Space Grotesk'; }
+@media(max-width:780px){ .pillars-cap{ grid-template-columns:1fr; gap:32px; } }
+
+/* ---------- PATHS ---------- */
+.paths-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+@media(max-width:780px){ .paths-grid{ grid-template-columns:1fr; } }
+.path-card{
+  background:var(--paper); border:1px solid var(--line-strong); border-radius:var(--radius);
+  padding:40px; display:flex; flex-direction:column; height:100%;
+}
+.path-card .icon{ width:44px; height:44px; color:var(--brass); margin-bottom:22px; }
+.path-card h3{ font-size:1.4rem; margin-bottom:12px; }
+.path-card p.desc{ color:var(--graphite-soft); margin-bottom:20px; }
+.path-card ul{ list-style:none; margin-bottom:28px; flex-grow:1; }
+.path-card li{ display:flex; gap:10px; margin-bottom:11px; font-size:0.96rem; color:var(--graphite); }
+.path-card li svg{ width:16px; height:16px; flex-shrink:0; margin-top:4px; color:var(--steel); }
+.path-cta{ display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono'; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--graphite); border-bottom:1px solid var(--graphite); width:fit-content; padding-bottom:3px; }
+.path-cta svg{ width:14px; height:14px; transition:transform .15s; }
+.path-card:hover .path-cta svg{ transform:translateX(3px); }
+
+/* ---------- SHOP ---------- */
+.shop-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+@media(max-width:980px){ .shop-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:520px){ .shop-grid{ grid-template-columns:1fr; } }
+.shop-grid-3{ grid-template-columns:repeat(3,1fr); }
+@media(max-width:780px){ .shop-grid-3{ grid-template-columns:1fr; } }
+.product-card{ border:1px solid var(--line-strong); border-radius:var(--radius); overflow:hidden; background:var(--paper); }
+.product-cover{
+  aspect-ratio:3/4; background:var(--paper-alt);
+  display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid var(--line);
+  color:var(--steel-soft);
+}
+.product-cover svg{ width:38px; height:38px; }
+.product-body{ padding:20px; }
+.product-body .eyebrow{ margin-bottom:8px; }
+.product-body h3{ font-size:1.02rem; margin-bottom:8px; }
+.product-body p{ font-size:0.9rem; color:var(--graphite-soft); margin-bottom:14px; }
+.product-link{ font-family:'IBM Plex Mono'; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--brass-deep); }
+
+/* ---------- BLOG ---------- */
+.blog-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+@media(max-width:860px){ .blog-grid{ grid-template-columns:1fr; } }
+.article-card{ border-top:2px solid var(--graphite); padding-top:18px; }
+.article-card .eyebrow{ margin-bottom:10px; }
+.article-card h3{ font-size:1.12rem; margin-bottom:10px; }
+.article-card p{ color:var(--graphite-soft); font-size:0.95rem; }
+
+/* ---------- NEWSLETTER ---------- */
+.newsletter{ background:var(--graphite); color:var(--paper); }
+.newsletter .wrap{ display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+.newsletter h2{ color:var(--paper); font-size:1.5rem; margin-bottom:6px; }
+.newsletter p{ color:#B7BEC7; }
+.newsletter form{ display:flex; gap:0; flex-shrink:0; }
+.newsletter input{
+  font-family:'IBM Plex Mono'; font-size:0.85rem; padding:14px 16px; width:240px;
+  background:#2A323F; border:1px solid #414B59; border-right:none; color:var(--paper); border-radius:var(--radius) 0 0 var(--radius);
+}
+.newsletter input::placeholder{ color:#7C8794; }
+.newsletter button{
+  font-family:'IBM Plex Mono'; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em;
+  background:var(--brass); color:var(--paper); border:1px solid var(--brass); padding:0 22px;
+  border-radius:0 var(--radius) var(--radius) 0; cursor:pointer;
+}
+
+/* ---------- CONTACT FORM ---------- */
+.contact-form{ max-width:620px; }
+.contact-form .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.contact-form label{ display:block; font-family:'IBM Plex Mono'; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--graphite-soft); margin-bottom:22px; }
+.contact-form input, .contact-form textarea{
+  display:block; width:100%; margin-top:8px; font-family:'Source Serif 4'; font-size:0.95rem;
+  padding:12px 14px; border:1px solid var(--line-strong); border-radius:var(--radius);
+  background:var(--paper); color:var(--graphite);
+}
+.contact-form textarea{ resize:vertical; }
+.contact-form button{ border:none; cursor:pointer; }
+@media(max-width:600px){ .contact-form .form-row{ grid-template-columns:1fr; } }
+
+/* ---------- FOOTER ---------- */
+footer{ padding:52px 0 40px; }
+.footer-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px; margin-bottom:40px; }
+.footer-links{ display:flex; gap:40px; flex-wrap:wrap; }
+.footer-col .eyebrow{ margin-bottom:14px; display:block; }
+.footer-col a{ display:block; font-size:0.92rem; color:var(--graphite-soft); margin-bottom:9px; }
+.footer-col a:hover{ color:var(--graphite); }
+.footer-bottom{ border-top:1px solid var(--line); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'IBM Plex Mono'; font-size:0.72rem; color:var(--graphite-soft); text-transform:uppercase; letter-spacing:0.04em; }
+
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brandmark">
+      <div class="mark">IN</div>
+      <div class="brand-name">Imię Nazwisko<span>Inżynieria Umysłu i Świadomości</span></div>
+    </div>
+    <nav class="links">
+      <a href="#sciezki">Dla kogo</a>
+      <a href="#model">Metoda</a>
+      <a href="#o-mnie">O mnie</a>
+      <a href="#sklep">Sklep</a>
+      <a href="#wiedza">Wiedza</a>
+      <a href="#kontakt" class="btn btn-outline">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Inżynieria Umysłu i Świadomości — Imię Nazwisko</span>
+        <h1>Szukasz ulgi,<br>sprawczości, efektu?</h1>
+        <p class="lead">Od 15 lat pracuję z ludzkim umysłem — z podświadomością, nawykami, emocjami i mechanizmami decyzji. Łączę inżynierskie podejście do procesu z głębokim rozumieniem psychologii. Pomagam osobom prywatnym zmieniać nawyki i przekonania oraz firmom podejmować lepsze decyzje.</p>
+        <div class="hero-ctas">
+          <a href="#sciezki" class="btn btn-brass">Pracuję z ludźmi →</a>
+          <a href="#sciezki" class="btn btn-outline">Pracuję z firmami →</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-placeholder">
+          <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="40" height="40"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          <span>Zdjęcie — do uzupełnienia</span>
+        </div>
+      </div>
+    </div>
+    <div class="stat-bar">
+      <div class="stat"><div class="num">450 godz.</div><div class="lbl">szkoleń i warsztatów dla firm w standardzie MSUES 2.0</div></div>
+      <div class="stat"><div class="num">300+</div><div class="lbl">uczestników i klientów</div></div>
+      <div class="stat"><div class="num">16 000 godz.</div><div class="lbl">edukacji</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="model" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Metoda</span>
+      <h2>Trzy filary pracy z umysłem</h2>
+      <p>Każdy projekt — indywidualny czy biznesowy — przechodzi przez ten sam schemat: najpierw zrozumienie, potem zmiana, na końcu świadome działanie.</p>
+    </div>
+
+    <svg class="model-diagram" viewBox="0 0 900 210" xmlns="http://www.w3.org/2000/svg">
+      <line x1="196" y1="105" x2="704" y2="105" stroke="#1E2530" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="2 6"/>
+      <g stroke="#1E2530" stroke-opacity="0.25">
+        <line x1="300" y1="99" x2="300" y2="111"/>
+        <line x1="450" y1="99" x2="450" y2="111"/>
+        <line x1="600" y1="99" x2="600" y2="111"/>
+      </g>
+      <!-- node 1 -->
+      <g>
+        <circle cx="150" cy="105" r="46" fill="#F6F5F1" stroke="#1E2530" stroke-width="1.4"/>
+        <path d="M150 85 v14 M150 111 v10 M138 105 h6 M156 105 h6" stroke="#AD7C24" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="150" cy="105" r="4" fill="#AD7C24"/>
+        <text x="150" y="35" text-anchor="middle" class="node-label" font-size="11" letter-spacing="1.5" fill="#3E5C76">01 · ŚWIADOMOŚĆ</text>
+        <text x="150" y="172" text-anchor="middle" class="node-label" font-size="12" fill="#5B6472">rozpoznanie wzorców</text>
+        <text x="150" y="190" text-anchor="middle" class="node-label" font-size="12" fill="#5B6472">i mechanizmów</text>
+      </g>
+      <!-- node 2 -->
+      <g>
+        <circle cx="450" cy="105" r="46" fill="#F6F5F1" stroke="#1E2530" stroke-width="1.4"/>
+        <path d="M432 105 a18 18 0 1 1 36 0" stroke="#AD7C24" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M468 105 l-6 -5 M468 105 l-6 5" stroke="#AD7C24" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <text x="450" y="35" text-anchor="middle" class="node-label" font-size="11" letter-spacing="1.5" fill="#3E5C76">02 · ZMIANA</text>
+        <text x="450" y="172" text-anchor="middle" class="node-label" font-size="12" fill="#5B6472">praca z nawykiem,</text>
+        <text x="450" y="190" text-anchor="middle" class="node-label" font-size="12" fill="#5B6472">emocją, przekonaniem</text>
+      </g>
+      <!-- node 3 -->
+      <g>
+        <circle cx="750" cy="105" r="46" fill="#F6F5F1" stroke="#1E2530" stroke-width="1.4"/>
+        <path d="M732 116 l12 -22 l10 12 l14 -18" stroke="#AD7C24" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="750" y="35" text-anchor="middle" class="node-label" font-size="11" letter-spacing="1.5" fill="#3E5C76">03 · WPŁYW</text>
+        <text x="750" y="172" text-anchor="middle" class="node-label" font-size="12" fill="#5B6472">świadome decyzje</text>
+        <text x="750" y="190" text-anchor="middle" class="node-label" font-size="12" fill="#5B6472">i działanie na innych</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section id="sciezki">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Dla kogo</span>
+      <h2>Dwie ścieżki, jedna metoda</h2>
+      <p>Ta sama wiedza o umyśle, zastosowana inaczej — w zależności od tego, czy pracujemy nad Tobą, czy nad Twoim zespołem.</p>
+    </div>
+    <div class="paths-grid">
+
+      <div class="path-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="7" r="3.5"/><path d="M5 20c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5"/></svg>
+        <h3>Dla Ciebie</h3>
+        <p class="desc">Zmień to, czego sam nie potrafiłeś zmienić. Sesje indywidualne pracy z podświadomością, nawykiem i emocjami.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>Chcesz uwolnić się od nawyku lub uzależnienia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>Emocje lub przekonania Cię ograniczają</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>Szukasz realnej zmiany, nie techniki na chwilę</li>
+        </ul>
+        <a href="#kontakt" class="path-cta">Umów konsultację <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="path-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 20V10M10 20V4M16 20v-7M4 20h16"/></svg>
+        <h3>Dla Firm</h3>
+        <p class="desc">Lepsze decyzje, odporniejsze zespoły, świadomi liderzy. Szkolenia i konsulting oparte na psychologii decyzji.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>Szkolenia zamknięte i warsztaty dla liderów</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>Konsulting indywidualny dla kadry</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>Wystąpienia eksperckie i keynote</li>
+        </ul>
+        <a href="#kontakt" class="path-cta">Zapytaj o ofertę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="o-mnie">
+  <div class="wrap about-grid reveal">
+    <div class="photo-placeholder">
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" width="46" height="46"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      <span>Zdjęcie — do uzupełnienia</span>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">O mnie</span>
+      <h2>Inżynier, który zajął się umysłem</h2>
+      <p>Z wykształcenia jestem inżynierem — i to ukształtowało sposób, w jaki patrzę na ludzki umysł: jako system, który można zrozumieć, przeanalizować i świadomie kształtować.</p>
+      <p>Od 15 lat pracuję z podświadomością, nawykami i emocjami — pomagając setkom osób przejść przez zmianę, której same nie potrafiły wprowadzić. Równolegle prowadzę szkolenia dla biznesu z zakresu psychologii decyzji, błędów poznawczych i wpływu.</p>
+      <p>Nie interesuje mnie teoria dla teorii. Interesuje mnie to, co realnie zmienia sposób, w jaki ludzie myślą, czują i działają.</p>
+      <a href="#doswiadczenie" class="btn btn-outline" style="margin-top:8px;">Moje doświadczenie →</a>
+    </div>
+  </div>
+</section>
+
+<section id="sklep" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Sklep</span>
+      <h2>Wiedza, którą możesz zabrać ze sobą</h2>
+      <p>Ebooki, audiobooki, kursy i sesje — materiały do pracy nad sobą we własnym tempie. Produkty dodam wkrótce.</p>
+    </div>
+    <div class="shop-grid shop-grid-3">
+
+      <div class="product-card">
+        <div class="product-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V5.5A1.5 1.5 0 0 0 18.5 4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5V6.5"/></svg></div>
+        <div class="product-body">
+          <span class="eyebrow">Ebook / Audiobook</span>
+          <h3>Ebooki i audiobooki</h3>
+          <p>Praktyczne treści do czytania lub słuchania — w Twoim tempie.</p>
+          <a href="#" class="product-link">Wkrótce</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="product-body">
+          <span class="eyebrow">Kurs / Szkolenie</span>
+          <h3>Kursy i szkolenia</h3>
+          <p>Rozłożona na etapy praca nad konkretnym obszarem zmiany.</p>
+          <a href="#" class="product-link">Wkrótce</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4A9 9 0 0 1 4 20l-1 1 1-4.2A8.4 8.4 0 0 1 20 11.5z"/></svg></div>
+        <div class="product-body">
+          <span class="eyebrow">Sesja 1:1</span>
+          <h3>Sesje indywidualne</h3>
+          <p>Praca jeden na jeden, online lub stacjonarnie w gabinecie.</p>
+          <a href="#kontakt" class="product-link">Umów →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="wiedza">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Wiedza</span>
+      <h2>Jak naprawdę działa ludzki umysł</h2>
+      <p>O mechanizmach podświadomości, błędach poznawczych i psychologii decyzji — praktycznie, bez mody na "rozwój osobisty".</p>
+    </div>
+    <div class="blog-grid">
+      <div class="article-card">
+        <span class="eyebrow">Świadomość</span>
+        <h3>Dlaczego znasz odpowiedź i tak jej nie stosujesz</h3>
+        <p>O luce między wiedzą a działaniem — i co naprawdę ją zamyka.</p>
+      </div>
+      <div class="article-card">
+        <span class="eyebrow">Zmiana</span>
+        <h3>Nawyk to nie kwestia silnej woli</h3>
+        <p>Jak podświadomość broni starych wzorców — i jak z nią pracować, a nie przeciw niej.</p>
+      </div>
+      <div class="article-card">
+        <span class="eyebrow">Wpływ</span>
+        <h3>Trzy błędy poznawcze, które kosztują firmy najwięcej</h3>
+        <p>Mechanizmy, które po cichu wpływają na decyzje zespołów zarządzających.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" style="border-bottom:none;">
+  <div class="wrap">
+    <div>
+      <h2>Bądź na bieżąco</h2>
+      <p>Raz w tygodniu — jedna konkretna myśl o umyśle, decyzjach i zmianie.</p>
+    </div>
+    <form onsubmit="return false;">
+      <input type="email" placeholder="twój@email.pl" required>
+      <button type="submit">Zapisz się</button>
+    </form>
+  </div>
+</section>
+
+<section id="kontakt" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Napisz, jak mogę pomóc</h2>
+      <p>Odpowiadam osobiście — zarówno na wiadomości dotyczące sesji indywidualnych, jak i zapytania biznesowe.</p>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-row">
+        <label>Imię<input type="text" name="name" required></label>
+        <label>Email<input type="email" name="email" required></label>
+      </div>
+      <label>Wiadomość<textarea name="message" rows="5" required></textarea></label>
+      <button type="submit" class="btn btn-brass">Wyślij wiadomość</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="brandmark">
+        <div class="mark">IN</div>
+        <div class="brand-name">Imię Nazwisko<span>Inżynieria Umysłu i Świadomości</span></div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <span class="eyebrow">Nawigacja</span>
+          <a href="#sciezki">Dla kogo</a>
+          <a href="#model">Metoda</a>
+          <a href="#sklep">Sklep</a>
+          <a href="#wiedza">Wiedza</a>
+        </div>
+        <div class="footer-col">
+          <span class="eyebrow">Kontakt</span>
+          <a href="mailto:kontakt@example.pl">kontakt@example.pl</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Imię Nazwisko — Inżynieria Umysłu i Świadomości</span>
+      <span>Kraków, Polska</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const els = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.15});
+els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

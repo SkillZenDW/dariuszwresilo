@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dariusz Wresiło — Inżynieria Umysłu i Świadomości | Szkolenia, konsultacje, sesje</title>
+<meta name="description" content="Dariusz Wresiło — inżynieria umysłu i świadomości. Sesje indywidualne, szkolenia dla firm i konsulting oparte na psychologii decyzji, pracy z podświadomością i zmianą nawyków.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dariuszwresilo.pl/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dariusz Wresiło — Inżynieria Umysłu i Świadomości">
+<meta property="og:description" content="Sesje indywidualne, szkolenia dla firm i konsulting oparte na psychologii decyzji, pracy z podświadomością i zmianą nawyków.">
+<meta property="og:image" content="https://dariuszwresilo.pl/images/about.jpg">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://dariuszwresilo.pl/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Dariusz Wresiło — Inżynieria Umysłu i Świadomości",
+  "url": "https://dariuszwresilo.pl/",
+  "email": "kontakt@dariuszwresilo.pl",
+  "areaServed": "PL",
+  "description": "Sesje indywidualne, szkolenia dla firm i konsulting oparte na psychologii decyzji, pracy z podświadomością i zmianą nawyków."
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --paper:#FBF8F1;
+  --paper-alt:#E9EBE1;
+  --graphite:#152238;
+  --graphite-soft:#57657C;
+  --steel:#1F4D3D;
+  --steel-soft:#5C8677;
+  --brass:#B8872E;
+  --brass-deep:#93691E;
+  --line: rgba(21,34,56,0.14);
+  --line-strong: rgba(21,34,56,0.26);
+  --radius: 16px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--paper);
+  color:var(--graphite);
+  font-family:'Plus Jakarta Sans', -apple-system, Segoe UI, sans-serif;
+  font-size:1.05rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3, .display{
+  font-family:'Fraunces', Georgia, serif;
+  color:var(--graphite);
+  letter-spacing:-0.01em;
+  line-height:1.1;
+}
+
+.eyebrow{
+  font-family:'Plus Jakarta Sans', sans-serif;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  font-size:0.72rem;
+  color:var(--steel);
+  font-weight:500;
+}
+
+a{ color:inherit; text-decoration:none; }
+:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
+
+.wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+/* ---------- NAV ---------- */
+header.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(246,245,241,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 32px;
+  max-width:1180px; margin:0 auto;
+}
+.brandmark{ display:flex; align-items:center; gap:12px; }
+.mark{
+  width:34px; height:34px; background:var(--graphite); color:var(--paper);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces'; font-weight:700; font-size:0.85rem;
+  border-radius:var(--radius);
+}
+.brand-name{ font-family:'Fraunces'; font-weight:600; font-size:1.02rem; }
+.brand-name span{ display:block; font-family:'Plus Jakarta Sans'; font-size:0.62rem; letter-spacing:0.12em; color:var(--graphite-soft); font-weight:400; text-transform:uppercase; margin-top:2px;}
+
+nav.links{ display:flex; align-items:center; gap:30px; }
+nav.links a{ font-family:'Plus Jakarta Sans'; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--graphite-soft); transition:color .15s; }
+nav.links a:hover{ color:var(--graphite); }
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Plus Jakarta Sans'; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em;
+  padding:11px 20px; border-radius:var(--radius); border:1px solid var(--graphite);
+  transition:all .15s;
+}
+.btn-brass{ background:var(--brass); color:var(--paper); border-color:var(--brass); }
+.btn-brass:hover{ background:var(--brass-deep); border-color:var(--brass-deep); }
+.btn-outline{ background:transparent; color:var(--graphite); }
+.btn-outline:hover{ background:var(--graphite); color:var(--paper); }
+
+@media(max-width:860px){ nav.links{ display:none; } }
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative; overflow:hidden;
+  padding:120px 0 90px;
+}
+.hero-inner{ position:relative; z-index:2; }
+.hero-grid{ display:grid; grid-template-columns:1.35fr 0.85fr; gap:56px; align-items:center; margin-bottom:48px; }
+@media(max-width:860px){ .hero-grid{ grid-template-columns:1fr; gap:32px; } .hero-photo{ max-width:220px; } }
+.hero h1{ font-size:clamp(2.1rem, 4vw, 3.5rem); margin:18px 0 22px; }
+.rotator{ position:relative; display:inline-block; min-width:9ch; height:1.1em; vertical-align:top; overflow:hidden; }
+.rotator span{ position:absolute; left:0; top:0; opacity:0; white-space:nowrap; animation:rotateWord 6s ease infinite; }
+.rotator span:nth-child(1){ animation-delay:0s; }
+.rotator span:nth-child(2){ animation-delay:2s; }
+.rotator span:nth-child(3){ animation-delay:4s; }
+@keyframes rotateWord{
+  0%{ opacity:0; transform:translateY(10px); }
+  6%{ opacity:1; transform:translateY(0); }
+  28%{ opacity:1; transform:translateY(0); }
+  34%{ opacity:0; transform:translateY(-10px); }
+  100%{ opacity:0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .rotator span{ animation:none; opacity:0; position:static; }
+  .rotator span:first-child{ opacity:1; }
+}
+.hero .lead{ font-size:1.14rem; color:var(--graphite-soft); max-width:560px; margin-bottom:36px; }
+.hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
+.hero-img{ width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:calc(var(--radius) + 6px); border:1px solid var(--line-strong); display:block; }
+
+.stat-bar{
+  display:flex; gap:0; border-top:1px solid var(--line-strong); padding-top:22px; flex-wrap:wrap;
+}
+.stat{ flex:1; min-width:150px; padding-right:24px; }
+.stat .num{ font-family:'Fraunces'; font-weight:700; font-size:2.3rem; color:var(--graphite); letter-spacing:-0.01em; }
+.stat .lbl{ font-family:'Plus Jakarta Sans'; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--graphite-soft); margin-top:6px; }
+@media(max-width:600px){
+  .stat-bar{ flex-direction:column; gap:18px; }
+  .stat{ min-width:0; padding-right:0; padding-bottom:18px; border-bottom:1px solid var(--line); }
+  .stat:last-child{ border-bottom:none; padding-bottom:0; }
+}
+
+/* ---------- SECTION SHELL ---------- */
+section{ padding:88px 0; border-bottom:1px solid var(--line); }
+section.alt{ background:var(--paper-alt); }
+.section-head{ max-width:640px; margin-bottom:52px; }
+.section-head h2{ font-size:clamp(1.6rem,2.6vw,2.2rem); margin-top:12px; }
+.section-head p{ color:var(--graphite-soft); margin-top:14px; }
+
+/* ---------- O MNIE ---------- */
+.about-grid{ display:grid; grid-template-columns:300px 1fr; gap:64px; align-items:start; }
+@media(max-width:780px){ .about-grid{ grid-template-columns:1fr; } }
+
+.about-text p{ margin-bottom:16px; max-width:600px; }
+.about-text .eyebrow{ margin-bottom:14px; display:block; }
+
+/* ---------- MODEL (signature diagram) ---------- */
+.model-diagram{ width:100%; height:auto; margin-top:20px; }
+.node-label{ font-family:'Plus Jakarta Sans', sans-serif; }
+.pillars-cap{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:36px; }
+.pillars-cap div p{ color:var(--graphite-soft); font-size:0.96rem; }
+.pillars-cap h3{ font-size:1rem; margin-bottom:8px; font-family:'Fraunces'; }
+@media(max-width:780px){ .pillars-cap{ grid-template-columns:1fr; gap:32px; } }
+
+/* ---------- PATHS ---------- */
+.paths-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+@media(max-width:780px){ .paths-grid{ grid-template-columns:1fr; } }
+.path-card{
+  background:var(--paper); border:1px solid var(--line-strong); border-radius:var(--radius);
+  padding:40px; display:flex; flex-direction:column; height:100%;
+}
+.icon-badge{ width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:22px; flex-shrink:0; }
+.icon-badge svg, .icon-badge img{ width:26px; height:26px; }
+.icon-badge.gold{ background:rgba(184,135,46,0.14); color:var(--brass-deep); }
+.icon-badge.green{ background:rgba(31,77,61,0.12); color:var(--steel); }
+.path-card h3{ font-size:1.4rem; margin-bottom:12px; }
+.path-card p.desc{ color:var(--graphite-soft); margin-bottom:20px; }
+.path-card ul{ list-style:none; margin-bottom:28px; flex-grow:1; }
+.path-card li{ display:flex; gap:12px; align-items:flex-start; margin-bottom:13px; font-size:0.96rem; color:var(--graphite); }
+.check-badge{ width:20px; height:20px; border-radius:50%; background:var(--brass); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+.check-badge svg{ width:11px; height:11px; }
+.path-cta{ display:inline-flex; align-items:center; gap:8px; font-family:'Plus Jakarta Sans'; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--graphite); border-bottom:1px solid var(--graphite); width:fit-content; padding-bottom:3px; }
+.path-cta svg{ width:14px; height:14px; transition:transform .15s; }
+.path-card:hover .path-cta svg{ transform:translateX(3px); }
+
+/* ---------- SHOP ---------- */
+.shop-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+@media(max-width:980px){ .shop-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:520px){ .shop-grid{ grid-template-columns:1fr; } }
+.shop-grid-3{ grid-template-columns:repeat(3,1fr); }
+@media(max-width:780px){ .shop-grid-3{ grid-template-columns:1fr; } }
+.product-card{ border:1px solid var(--line-strong); border-radius:var(--radius); overflow:hidden; background:var(--paper); }
+.product-cover{
+  aspect-ratio:3/4; background:var(--paper-alt);
+  display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid var(--line);
+}
+.product-cover .icon-badge{ width:72px; height:72px; margin-bottom:0; }
+.product-cover .icon-badge svg, .product-cover .icon-badge img{ width:32px; height:32px; }
+.product-body{ padding:20px; }
+.product-body .eyebrow{ margin-bottom:8px; }
+.product-body h3{ font-size:1.02rem; margin-bottom:8px; }
+.product-body p{ font-size:0.9rem; color:var(--graphite-soft); margin-bottom:14px; }
+.product-link{ font-family:'Plus Jakarta Sans'; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--brass-deep); }
+
+/* ---------- BLOG ---------- */
+.blog-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+@media(max-width:860px){ .blog-grid{ grid-template-columns:1fr; } }
+.article-card{ border-top:2px solid var(--graphite); padding-top:18px; }
+.article-card .eyebrow{ margin-bottom:10px; }
+.article-card h3{ font-size:1.12rem; margin-bottom:10px; }
+.article-card p{ color:var(--graphite-soft); font-size:0.95rem; }
+
+/* ---------- NEWSLETTER ---------- */
+.newsletter{ background:var(--graphite); color:var(--paper); }
+.newsletter .wrap{ display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+.newsletter h2{ color:var(--paper); font-size:1.5rem; margin-bottom:6px; }
+.newsletter p{ color:#B7BEC7; }
+.newsletter form{ display:flex; gap:0; flex-shrink:0; }
+.newsletter input{
+  font-family:'Plus Jakarta Sans'; font-size:0.85rem; padding:14px 16px; width:240px;
+  background:#2A323F; border:1px solid #414B59; border-right:none; color:var(--paper); border-radius:var(--radius) 0 0 var(--radius);
+}
+.newsletter input::placeholder{ color:#7C8794; }
+.newsletter button{
+  font-family:'Plus Jakarta Sans'; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em;
+  background:var(--brass); color:var(--paper); border:1px solid var(--brass); padding:0 22px;
+  border-radius:0 var(--radius) var(--radius) 0; cursor:pointer;
+}
+@media(max-width:600px){
+  .newsletter form{ flex-shrink:1; width:100%; }
+  .newsletter input{ width:auto; flex:1; min-width:0; }
+  .newsletter button{ flex-shrink:0; padding:0 14px; }
+}
+
+/* ---------- CONTACT DIRECT ---------- */
+.contact-direct{ display:flex; gap:16px; flex-wrap:wrap; }
+.contact-direct .btn{ font-size:0.85rem; padding:14px 22px; }
+
+/* ---------- FOOTER ---------- */
+footer{ padding:52px 0 40px; }
+.footer-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px; margin-bottom:40px; }
+.footer-links{ display:flex; gap:40px; flex-wrap:wrap; }
+.footer-col .eyebrow{ margin-bottom:14px; display:block; }
+.footer-col a{ display:block; font-size:0.92rem; color:var(--graphite-soft); margin-bottom:9px; }
+.footer-col a:hover{ color:var(--graphite); }
+.footer-bottom{ border-top:1px solid var(--line); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'Plus Jakarta Sans'; font-size:0.72rem; color:var(--graphite-soft); text-transform:uppercase; letter-spacing:0.04em; }
+
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
+
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+.hero-text .eyebrow{ animation:fadeUp .7s ease both; }
+.hero-text h1{ animation:fadeUp .7s ease .1s both; }
+.hero-text .lead{ animation:fadeUp .7s ease .2s both; }
+.hero-ctas{ animation:fadeUp .7s ease .3s both; }
+.hero-photo{ animation:fadeUp .9s ease .15s both; }
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .hero-text .eyebrow, .hero-text h1, .hero-text .lead, .hero-ctas, .hero-photo{ animation:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brandmark">
+      <div class="mark">DW</div>
+      <div class="brand-name">Dariusz Wresiło<span>Inżynieria Umysłu i Świadomości</span></div>
+    </div>
+    <nav class="links">
+      <a href="#sciezki">Dla kogo</a>
+      <a href="#model">Metoda</a>
+      <a href="#o-mnie">O mnie</a>
+      <a href="#sklep">Sklep</a>
+      <a href="#wiedza">Wiedza</a>
+      <a href="#kontakt" class="btn btn-outline">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Inżynieria Umysłu i Świadomości — Dariusz Wresiło</span>
+        <h1>Szukasz <span class="rotator"><span>ulgi?</span><span>sprawczości?</span><span>efektu?</span></span></h1>
+        <p class="lead">Od 15 lat pracuję z ludzkim umysłem — z podświadomością, nawykami, emocjami i mechanizmami decyzji. Łączę inżynierskie podejście do procesu z głębokim rozumieniem psychologii. Pomagam osobom prywatnym zmieniać nawyki i przekonania oraz firmom podejmować lepsze decyzje.</p>
+        <div class="hero-ctas">
+          <a href="#sciezki" class="btn btn-brass">Pracuję z ludźmi →</a>
+          <a href="#sciezki" class="btn btn-outline">Pracuję z firmami →</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/hero.jpg" alt="Dariusz Wresiło — inżynieria umysłu i świadomości" class="hero-img" width="900" height="900" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+    <div class="stat-bar">
+      <div class="stat"><div class="num"><span class="counter" data-target="16000">0</span> godz.</div><div class="lbl">własnej edukacji</div></div>
+      <div class="stat"><div class="num"><span class="counter" data-target="460">0</span> godz.</div><div class="lbl">szkoleń i warsztatów dla firm w standardzie MSUES 2.0</div></div>
+      <div class="stat"><div class="num"><span class="counter" data-target="300">0</span>+</div><div class="lbl">uczestników i klientów</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="model" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Metoda</span>
+      <h2>Trzy filary pracy z umysłem</h2>
+      <p>Każdy projekt — indywidualny czy biznesowy — przechodzi przez ten sam schemat: najpierw zrozumienie, potem zmiana, na końcu świadome działanie.</p>
+    </div>
+
+    <svg class="model-diagram" viewBox="0 0 900 210" xmlns="http://www.w3.org/2000/svg">
+      <line x1="196" y1="105" x2="704" y2="105" stroke="#152238" stroke-width="1" stroke-opacity="0.18" stroke-dasharray="2 6"/>
+      <g stroke="#152238" stroke-opacity="0.18">
+        <line x1="300" y1="99" x2="300" y2="111"/>
+        <line x1="450" y1="99" x2="450" y2="111"/>
+        <line x1="600" y1="99" x2="600" y2="111"/>
+      </g>
+      <!-- node 1 : świadomość (gold) -->
+      <g>
+        <circle cx="150" cy="105" r="46" fill="rgba(184,135,46,0.14)" stroke="#B8872E" stroke-width="1.6"/>
+        <image href="images/icons/awareness.svg" x="121" y="76" width="58" height="58"/>
+        <text x="150" y="35" text-anchor="middle" class="node-label" font-size="11" letter-spacing="1.5" fill="#1F4D3D">01 · ŚWIADOMOŚĆ</text>
+        <text x="150" y="172" text-anchor="middle" class="node-label" font-size="12" fill="#57657C">rozpoznanie wzorców</text>
+        <text x="150" y="190" text-anchor="middle" class="node-label" font-size="12" fill="#57657C">i mechanizmów</text>
+      </g>
+      <!-- node 2 : zmiana (zieleń) -->
+      <g>
+        <circle cx="450" cy="105" r="46" fill="rgba(31,77,61,0.12)" stroke="#1F4D3D" stroke-width="1.6"/>
+        <image href="images/icons/change.svg" x="421" y="76" width="58" height="58"/>
+        <text x="450" y="35" text-anchor="middle" class="node-label" font-size="11" letter-spacing="1.5" fill="#1F4D3D">02 · ZMIANA</text>
+        <text x="450" y="172" text-anchor="middle" class="node-label" font-size="12" fill="#57657C">praca z nawykiem,</text>
+        <text x="450" y="190" text-anchor="middle" class="node-label" font-size="12" fill="#57657C">emocją, przekonaniem</text>
+      </g>
+      <!-- node 3 : wpływ (gold) -->
+      <g>
+        <circle cx="750" cy="105" r="46" fill="rgba(184,135,46,0.14)" stroke="#B8872E" stroke-width="1.6"/>
+        <image href="images/icons/impact.svg" x="721" y="76" width="58" height="58"/>
+        <text x="750" y="35" text-anchor="middle" class="node-label" font-size="11" letter-spacing="1.5" fill="#1F4D3D">03 · WPŁYW</text>
+        <text x="750" y="172" text-anchor="middle" class="node-label" font-size="12" fill="#57657C">świadome decyzje</text>
+        <text x="750" y="190" text-anchor="middle" class="node-label" font-size="12" fill="#57657C">i działanie na innych</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section id="sciezki">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Dla kogo</span>
+      <h2>Dwie ścieżki, jedna metoda</h2>
+      <p>Ta sama wiedza o umyśle, zastosowana inaczej — w zależności od tego, czy pracujemy nad Tobą, czy nad Twoim zespołem.</p>
+    </div>
+    <div class="paths-grid">
+
+      <div class="path-card">
+        <div class="icon-badge gold"><img src="images/icons/individual.svg" alt="" width="26" height="26"></div>
+        <h3>Dla Ciebie</h3>
+        <p class="desc">Zmień to, czego sam nie potrafiłeś zmienić. Sesje indywidualne pracy z podświadomością, nawykiem i emocjami.</p>
+        <ul>
+          <li><span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Chcesz uwolnić się od nawyku lub uzależnienia</li>
+          <li><span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Emocje lub przekonania Cię ograniczają</li>
+          <li><span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Szukasz realnej zmiany, nie techniki na chwilę</li>
+        </ul>
+        <a href="#kontakt" class="path-cta">Umów konsultację <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="path-card">
+        <div class="icon-badge green"><img src="images/icons/business.svg" alt="" width="26" height="26"></div>
+        <h3>Dla Firm</h3>
+        <p class="desc">Lepsze decyzje, odporniejsze zespoły, świadomi liderzy. Szkolenia i konsulting oparte na psychologii decyzji.</p>
+        <ul>
+          <li><span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Szkolenia zamknięte i warsztaty dla liderów</li>
+          <li><span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Konsulting indywidualny dla kadry</li>
+          <li><span class="check-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Wystąpienia eksperckie i keynote</li>
+        </ul>
+        <a href="#kontakt" class="path-cta">Zapytaj o ofertę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="o-mnie">
+  <div class="wrap about-grid reveal">
+    <img src="images/about.jpg" alt="Dariusz Wresiło przy biurku" class="hero-img" width="900" height="900" loading="lazy">
+
+    <div class="about-text">
+      <span class="eyebrow">O mnie</span>
+      <h2>Inżynier, który zajął się umysłem</h2>
+      <p>Z wykształcenia jestem inżynierem — i to ukształtowało sposób, w jaki patrzę na ludzki umysł: jako system, który można zrozumieć, przeanalizować i świadomie kształtować.</p>
+      <p>Od 15 lat pracuję z podświadomością, nawykami i emocjami — pomagając setkom osób przejść przez zmianę, której same nie potrafiły wprowadzić. Równolegle prowadzę szkolenia dla biznesu z zakresu psychologii decyzji, błędów poznawczych i wpływu.</p>
+      <p>Nie interesuje mnie teoria dla teorii. Interesuje mnie to, co realnie zmienia sposób, w jaki ludzie myślą, czują i działają.</p>
+      <a href="#doswiadczenie" class="btn btn-outline" style="margin-top:8px;">Moje doświadczenie →</a>
+    </div>
+  </div>
+</section>
+
+<section id="sklep" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Sklep</span>
+      <h2>Wiedza, którą możesz zabrać ze sobą</h2>
+      <p>Ebooki, audiobooki, kursy i sesje — materiały do pracy nad sobą we własnym tempie. Produkty dodam wkrótce.</p>
+    </div>
+    <div class="shop-grid shop-grid-3">
+
+      <div class="product-card">
+        <div class="product-cover"><div class="icon-badge gold"><img src="images/icons/ebook.svg" alt="" width="32" height="32"></div></div>
+        <div class="product-body">
+          <span class="eyebrow">Raport</span>
+          <h3>Rekrutacja. To jest proste.</h3>
+          <p>System do oceny kandydatów bez uprzedzeń. 7 pytań, które są warte miliony.</p>
+          <a href="rekrutacja/" class="product-link">Pobierz za 47 zł →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-cover"><div class="icon-badge gold"><img src="images/icons/ebook.svg" alt="" width="32" height="32"></div></div>
+        <div class="product-body">
+          <span class="eyebrow">Ebook / Audiobook</span>
+          <h3>Ebooki i audiobooki</h3>
+          <p>Praktyczne treści do czytania lub słuchania — w Twoim tempie.</p>
+          <a href="#" class="product-link">Wkrótce</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-cover"><div class="icon-badge green"><img src="images/icons/course.svg" alt="" width="32" height="32"></div></div>
+        <div class="product-body">
+          <span class="eyebrow">Kurs / Szkolenie</span>
+          <h3>Kursy i szkolenia</h3>
+          <p>Rozłożona na etapy praca nad konkretnym obszarem zmiany.</p>
+          <a href="#" class="product-link">Wkrótce</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="wiedza">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Wiedza</span>
+      <h2>Jak naprawdę działa ludzki umysł</h2>
+      <p>O mechanizmach podświadomości, błędach poznawczych i psychologii decyzji — praktycznie, bez mody na "rozwój osobisty".</p>
+    </div>
+    <div class="blog-grid">
+      <div class="article-card">
+        <span class="eyebrow">Świadomość</span>
+        <h3>Dlaczego znasz odpowiedź i tak jej nie stosujesz</h3>
+        <p>O luce między wiedzą a działaniem — i co naprawdę ją zamyka.</p>
+      </div>
+      <div class="article-card">
+        <span class="eyebrow">Zmiana</span>
+        <h3>Nawyk to nie kwestia silnej woli</h3>
+        <p>Jak podświadomość broni starych wzorców — i jak z nią pracować, a nie przeciw niej.</p>
+      </div>
+      <div class="article-card">
+        <span class="eyebrow">Wpływ</span>
+        <h3>Trzy błędy poznawcze, które kosztują firmy najwięcej</h3>
+        <p>Mechanizmy, które po cichu wpływają na decyzje zespołów zarządzających.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" style="border-bottom:none;">
+  <div class="wrap">
+    <div>
+      <h2>Bądź na bieżąco</h2>
+      <p>Raz w tygodniu — jedna konkretna myśl o umyśle, decyzjach i zmianie.</p>
+    </div>
+    <form onsubmit="return false;">
+      <input type="email" placeholder="twój@email.pl" required>
+      <button type="submit">Zapisz się</button>
+    </form>
+  </div>
+</section>
+
+<section id="kontakt" class="alt">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Napisz, jak mogę pomóc</h2>
+      <p>Odpowiadam osobiście — zarówno na wiadomości dotyczące sesji indywidualnych, jak i zapytania biznesowe.</p>
+    </div>
+    <div class="contact-direct">
+      <a href="mailto:kontakt@dariuszwresilo.pl" class="btn btn-brass">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        kontakt@dariuszwresilo.pl
+      </a>
+      <a href="tel:+48535211027" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M4 5c0 8.3 6.7 15 15 15l3-4-6-3-2 2c-2.5-1.2-4.8-3.5-6-6l2-2-3-6z"/></svg>
+        535 211 027
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="brandmark">
+        <div class="mark">DW</div>
+        <div class="brand-name">Dariusz Wresiło<span>Inżynieria Umysłu i Świadomości</span></div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <span class="eyebrow">Nawigacja</span>
+          <a href="#sciezki">Dla kogo</a>
+          <a href="#model">Metoda</a>
+          <a href="#sklep">Sklep</a>
+          <a href="#wiedza">Wiedza</a>
+        </div>
+        <div class="footer-col">
+          <span class="eyebrow">Kontakt</span>
+          <a href="mailto:kontakt@dariuszwresilo.pl">kontakt@dariuszwresilo.pl</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Dariusz Wresiło — Inżynieria Umysłu i Świadomości</span>
+      <span>Polska</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const els = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.15});
+els.forEach(el=>io.observe(el));
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const formatNumber = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+function animateCounter(el){
+  const target = parseInt(el.dataset.target, 10);
+  if(reduceMotion){ el.textContent = formatNumber(target); return; }
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now){
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = formatNumber(Math.floor(eased * target));
+    if(progress < 1) requestAnimationFrame(tick);
+    else el.textContent = formatNumber(target);
+  }
+  requestAnimationFrame(tick);
+}
+
+const counters = document.querySelectorAll('.counter');
+const counterIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ animateCounter(e.target); counterIO.unobserve(e.target); } });
+},{threshold:0.4});
+counters.forEach(c=>counterIO.observe(c));
+</script>
+
+</body>
+</html>
