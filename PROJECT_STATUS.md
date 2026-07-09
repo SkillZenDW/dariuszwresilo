@@ -35,19 +35,24 @@ moja www/
 │   ├── index.html, styles.css, main.js, regulamin.html, polityka-prywatnosci.html
 │   └── assets/img/raport-cover.jpg, karta-mockup.png, autor-portret.jpg
 │   └── assets/*.pdf (raport-rekrutacyjny.pdf, karta-oceny-kandydata.pdf)
-└── ekrany/              ← produkt 2: landing "Ekran nie musi wygrywać" (skopiowany z ../ekran-nie-musi-wygrywac.html, obrazy jako base64 inline w HTML)
-    └── index.html
+├── ekrany/              ← produkt 2: landing "Ekran nie musi wygrywać" (skopiowany z ../ekran-nie-musi-wygrywac.html, obrazy jako base64 inline w HTML)
+│   └── index.html
+└── dynamika/            ← produkt 3: landing "Dynamika Poziomów Świadomości" (skopiowany z ../fable1/dynamika-poziomow-swiadomosci.html, własny styl kremowy/granat/złoto, NIE dopasowany do reszty strony celowo — user tak zdecydował)
+    ├── index.html
+    ├── mapa-poziomow-swiadomosci.pdf   ← darmowy lead-magnet do pobrania na stronie
+    └── og-obrazek.jpg                  ← okładka książki wyrenderowana z PDF-a, używana jako og:image i jako zdjęcie karty w sklepie
 ```
 
 Uwaga: `index (1).html` w folderze to stara wersja robocza sprzed dodania zdjęć — **nieużywana**, można pominąć/usunąć jeśli będzie zaśmiecać.
 
 ## Sekcja "Sklep" na stronie głównej (`index.html`, `<section id="sklep">`)
 
-Obecnie **2 produkty w gridzie 2-kolumnowym** (`shop-grid shop-grid-2`):
+Obecnie **3 produkty w gridzie 3-kolumnowym** (`shop-grid shop-grid-3` — klasa CSS była już gotowa, czekała na 3. kartę):
 1. **Rekrutacja. To jest proste.** — zdjęcie `rekrutacja/assets/img/raport-cover.jpg`, link do `rekrutacja/`, cena "Pobierz za 47 →"
 2. **Ekran nie musi wygrywać** — zdjęcie `images/ekran-mockup.jpg`, link do `ekrany/`, opis "Ebook + Audiobook + Kurs"
+3. **Dynamika Poziomów Świadomości** — zdjęcie `dynamika/og-obrazek.jpg`, link do `dynamika/`, opis "Poradnik + Mapa + Karty" (dodane 2026-07-09)
 
-User zapowiedział: **"będą narazie 2 produkty, zaraz zrobimy trzeci"** — czyli trzeci produkt (prawdopodobnie kurs/audiobook osobno, albo coś nowego) jest w planach, nieokreślony jeszcze.
+Kolejny (4.) produkt jest w planach jako **kurs online** — surowe materiały (okładka kursu, portret autora) już wygenerowane w `/Users/darek/projekt ebook/assets/img/gen/`, ale strony jeszcze nie ma. Nie zaczynać bez wyraźnej prośby usera.
 
 ## Zmiany copywriterskie w rekrutacja/index.html (zastosowany behavioral design)
 
@@ -63,10 +68,15 @@ User poprosił o konkretne triki psychologiczne (anchoring, framing liczb):
 
 ## Co NIE jest jeszcze zrobione / do potwierdzenia
 
-1. **Trzeci produkt w sklepie** — zapowiedziany, nieokreślony
-2. **glow-landing** (`/Users/darek/projekt ebook/glow-landing/`) — folder istnieje ale zawiera tylko puste podfoldery `assets/img/`, brak HTML/CSS/JS. Nie wiadomo co to ma być — do wyjaśnienia z userem jeśli wróci temat.
-3. **Potwierdzenie pełnej propagacji DNS** i usunięcie starego hostingu WordPress (zewnętrzna osoba go prowadzi)
-4. Ceny/liczby na `ekrany/index.html` (landing "Ekran nie musi wygrywać") **nie były jeszcze tknięte** pod kątem behavioral design — tylko strona główna dodała do niej link i mockup. Jeśli user zechce podobne poprawki cenowe/copywriterskie jak w rekrutacja/, trzeba przejść przez ten sam proces.
+1. **glow-landing** (`/Users/darek/projekt ebook/glow-landing/`) — folder istnieje ale zawiera tylko puste podfoldery `assets/img/`, brak HTML/CSS/JS. Nie wiadomo co to ma być — do wyjaśnienia z userem jeśli wróci temat. To samo dotyczy `/Users/darek/projekt ebook/projekt Rama/` — całkowicie pusty, zero plików.
+2. **Potwierdzenie pełnej propagacji DNS** i usunięcie starego hostingu WordPress (zewnętrzna osoba go prowadzi)
+3. Ceny/liczby na `ekrany/index.html` (landing "Ekran nie musi wygrywać") **nie były jeszcze tknięte** pod kątem behavioral design — tylko strona główna dodała do niej link i mockup. Jeśli user zechce podobne poprawki cenowe/copywriterskie jak w rekrutacja/, trzeba przejść przez ten sam proces. (`dynamika/index.html` NIE potrzebuje tego przejścia — miała pełną architekturę behavioralną zaprojektowaną od razu przy budowie: kotwiczenie, wyróżnienie pakietu polecanego, autorytet, koszt bezczynności itd.)
+4. **Kurs online (4. produkt)** — surowe materiały graficzne gotowe (`assets/img/gen/`), strona nieistniejąca. Czeka na wyraźną prośbę usera.
+5. **Uporządkowanie duplikatów w `/Users/darek/projekt ebook/` (root, poza `moja www/`)** — nieruszane, user świadomie odłożył: `rekrutacja-landing/` (starsza wersja tego, co już jest w `moja www/rekrutacja/`, stara cena 67 zł), `raport /` (surowe źródła, już wchłonięte), źle nazwane `Rekrutacja (1/2).jpg` (to w rzeczywistości mockupy "Ekran nie musi wygrywać", nie materiały rekrutacyjne).
+
+## Naprawione błędy (2026-07-09)
+
+- **`rekrutacja/index.html`, główny przycisk "Kup teraz za 47 zł"** linkował do `href="#zakup"` — taki `id` nigdzie w pliku nie istniał, więc przycisk **realnie nic nie robił** (pozostałe CTA na tej stronie poprawnie wracają do `#cennik`, tylko ten jeden był martwy). Zmienione na `mailto:kontakt@dariuszwresilo.pl?subject=...` jako tymczasowa łatka — to NIE jest prawdziwy checkout, tylko żeby przycisk w ogóle coś robił. Docelowo warto dodać tej stronie taką samą sekcję `#kontakt` z formularzem FormSubmit, jaką ma `ekrany/index.html` i `dynamika/index.html`.
 
 ## Sposób pracy z userem (ważne dla stylu)
 
