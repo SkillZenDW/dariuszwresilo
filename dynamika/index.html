@@ -231,6 +231,7 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
 .pcard .pricebox{margin:auto 0 20px;display:flex;align-items:baseline;gap:10px}
 .pcard .old-price{font-family:var(--display);font-size:1.05rem;color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--gold-deep)}
 .pcard .now-price{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--gold-deep);line-height:1}
+.premiere-note{font-size:.72rem;color:var(--ink-soft);margin-top:8px}
 .pcard .discount-badge{
   font-family:var(--display);font-weight:800;font-size:.78rem;background:var(--navy);color:#F2ECDC;
   padding:5px 10px;border-radius:999px;align-self:center;
@@ -356,11 +357,12 @@ footer{background:var(--navy-deep);color:#C7D3D6}
           <span class="hero-stat-label">ludzi żyje poniżej poziomu Odwagi (wg badań D.R. Hawkinsa)</span>
         </div>
       </div>
-      <a class="btn btn-primary btn-price" href="#kontakt" data-product="Ebook + Audiobook (47 zł)">
+      <a class="btn btn-primary btn-price" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)">
         <span class="btn-price-main">Zamawiam za 47 zł</span>
         <span class="btn-price-old">zamiast 77 zł</span>
       </a>
       <span class="btn-note">albo książka papierowa w pełnym komplecie — 97 zł, niżej ↓</span>
+      <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
     </div>
     <div class="hero-cover reveal">
       <span class="hero-badge">−39%</span>
@@ -543,7 +545,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
           <li>6 dwustronnych, złoconych Kart Świadomości — noś je przy sobie</li>
           <li>Wysyłka kurierem w 3–5 dni roboczych</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="#kontakt" data-product="Książka — pełny komplet (97 zł)">Zamawiam komplet — 97 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Książka — pełny komplet (97 zł)">Zamawiam komplet — 97 zł</a>
       </div>
 
       <!-- EBOOK + AUDIOBOOK -->
@@ -557,21 +559,22 @@ footer{background:var(--navy-deep);color:#C7D3D6}
           <div class="now-price">47 zł</div>
           <span class="discount-badge">−39%</span>
         </div>
+        <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
         <ul>
           <li>Ebook PDF — 158 stron, na telefon, tablet lub czytnik</li>
           <li>Audiobook mp3 — słuchasz w aucie, na spacerze</li>
           <li>Dostęp natychmiast po zakupie</li>
           <li>Najniższy próg wejścia — zacznij tu, dołóż komplet papierowy później</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="#kontakt" data-product="Ebook + Audiobook (47 zł)">Zamawiam za 47 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)">Zamawiam za 47 zł</a>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- LEAD MAGNET: DARMOWA MAPA PDF -->
-<section class="section">
+<!-- LEAD MAGNET: DARMOWA MAPA PDF (ukryta na prośbę usera) -->
+<section class="section" style="display:none">
   <div class="wrap narrow">
     <div class="lead-magnet reveal" style="text-align:center">
       <span class="eyebrow">Jeszcze się zastanawiasz?</span>
@@ -637,7 +640,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
       <cite>— Dariusz Wresiło</cite>
     </div>
     <div class="reveal" style="margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-primary" href="#kontakt" data-product="Ebook + Audiobook (47 zł)">Zamawiam ebook + audiobook — 47 zł</a>
+      <a class="btn btn-primary" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)">Zamawiam ebook + audiobook — 47 zł</a>
       <a class="btn btn-ghost" href="#pakiety">Zobacz pełny komplet — 97 zł</a>
     </div>
   </div>
@@ -825,10 +828,12 @@ footer{background:var(--navy-deep);color:#C7D3D6}
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       }).then(function(res){
-        if(!res.ok) throw new Error('send_failed');
-        if(msgEl) msgEl.classList.add('show');
-        form.reset();
-        if(onSuccess) onSuccess();
+        return res.json().then(function(data){
+          if(!res.ok || data.success === false || data.success === 'false') throw new Error('send_failed');
+          if(msgEl) msgEl.classList.add('show');
+          form.reset();
+          if(onSuccess) onSuccess();
+        });
       }).catch(function(){
         form.submit();
       }).finally(function(){

@@ -241,6 +241,7 @@ p+p{margin-top:1em}
 .pcard .pricebox{margin:auto 0 20px}
 .pcard .old-price{font-family:var(--display);font-size:1.05rem;color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--orange-deep)}
 .pcard .now-price{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--orange-deep);line-height:1}
+.premiere-note{font-size:.72rem;color:var(--ink-soft);margin-top:10px;text-align:center}
 .pcard ul{list-style:none;display:grid;gap:8px;margin-bottom:22px;font-size:.9rem}
 .pcard ul li{padding-left:22px;position:relative;color:var(--ink)}
 .pcard ul li::before{content:"✓";position:absolute;left:0;color:var(--leaf);font-family:var(--display);font-weight:800}
@@ -367,7 +368,7 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
           <span class="hero-stat-label">dzieci w Polsce<br>codziennie w sieci</span>
         </div>
       </div>
-      <a class="btn btn-primary btn-price" href="#pakiety">
+      <a class="btn btn-primary btn-price" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">
         <span class="btn-price-main">Zamawiam za 47 zł</span>
         <span class="btn-price-old">zamiast 77 zł</span>
       </a>
@@ -521,6 +522,7 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
           <li>Cena przedsprzedażowa — rośnie po starcie</li>
         </ul>
         <a class="btn btn-primary btn-full" href="#kontakt">Rezerwuję miejsce — 297 zł</a>
+        <p class="premiere-note">Cena premierowa — obowiązuje w okresie przedsprzedaży.</p>
       </div>
 
       <!-- EBOOK + AUDIOBOOK (polecane) -->
@@ -539,7 +541,8 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
           <li>Dostęp natychmiast po zakupie</li>
           <li>Najniższy próg wejścia — zacznij tu, dołóż resztę później</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="#kontakt">Zamawiam za 47 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">Zamawiam za 47 zł</a>
+        <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
       </div>
 
     </div>
@@ -735,6 +738,10 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
   if(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
       fetch('https://formsubmit.co/ajax/kontakt@dariuszwresilo.pl', {
@@ -742,9 +749,11 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       }).then(function(res){
-        if(!res.ok) throw new Error('send_failed');
-        document.getElementById('formMsg').classList.add('show');
-        form.reset();
+        return res.json().then(function(data){
+          if(!res.ok || data.success === false || data.success === 'false') throw new Error('send_failed');
+          document.getElementById('formMsg').classList.add('show');
+          form.reset();
+        });
       }).catch(function(){
         form.submit(); // fallback: pełne przesłanie do FormSubmit, jeśli AJAX zawiedzie
       }).finally(function(){
