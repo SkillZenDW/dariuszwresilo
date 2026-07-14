@@ -843,6 +843,7 @@ footer{ padding:52px 0 40px; background:var(--bg-card); border-top:1px solid var
         <div class="footer-col">
           <span class="eyebrow">Prawne</span>
           <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+          <a href="#" class="cookie-settings-link">Ustawienia cookies</a>
         </div>
       </div>
     </div>
@@ -853,12 +854,12 @@ footer{ padding:52px 0 40px; background:var(--bg-card); border-top:1px solid var
   </div>
 </footer>
 
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Zgoda na pliki cookies">
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Ustawienia plików cookie">
   <div class="cookie-banner-inner">
-    <p>Używam plików cookie do analizy ruchu na stronie (Google Analytics). Możesz zaakceptować lub odrzucić — nie wpływa to na dostępność treści. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
+    <p><strong>Niezbędne</strong> pliki cookie są zawsze aktywne (działanie strony). <strong>Opcjonalne</strong> — Google Analytics i Meta Pixel, do analizy ruchu i pomiaru skuteczności reklam — włączają się wyłącznie za Twoją zgodą. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
     <div class="cookie-banner-actions">
-      <button type="button" class="btn btn-outline" id="cookieDecline">Odrzuć</button>
-      <button type="button" class="btn btn-brass" id="cookieAccept">Akceptuję</button>
+      <button type="button" class="btn btn-outline" id="cookieNecessaryOnly">Tylko niezbędne</button>
+      <button type="button" class="btn btn-brass" id="cookieAcceptAll">Akceptuję wszystkie</button>
     </div>
   </div>
 </div>
@@ -926,20 +927,43 @@ themeToggle.addEventListener('click', ()=>{
   else { rootEl.setAttribute('data-theme','light'); localStorage.setItem('theme','light'); }
 });
 
-/* ---------- COOKIE CONSENT ---------- */
+/* ---------- COOKIE CONSENT (niezbędne / opcjonalne) ---------- */
 const cookieBanner = document.getElementById('cookieBanner');
 const cookieConsent = localStorage.getItem('cookie_consent');
+
+function loadMetaPixel(){
+  if(window.fbq) return;
+  var pixelId = '2106886550205962';
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', pixelId);
+  fbq('track', 'PageView');
+}
+
+function grantOptionalCookies(){
+  gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  loadMetaPixel();
+}
+
 if(!cookieConsent){
   setTimeout(()=>{ cookieBanner.classList.add('is-visible'); }, 800);
+} else if(cookieConsent === 'granted'){
+  grantOptionalCookies();
 }
-document.getElementById('cookieAccept').addEventListener('click', ()=>{
+document.getElementById('cookieAcceptAll').addEventListener('click', ()=>{
   localStorage.setItem('cookie_consent', 'granted');
-  gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  grantOptionalCookies();
   cookieBanner.classList.remove('is-visible');
 });
-document.getElementById('cookieDecline').addEventListener('click', ()=>{
+document.getElementById('cookieNecessaryOnly').addEventListener('click', ()=>{
   localStorage.setItem('cookie_consent', 'denied');
   cookieBanner.classList.remove('is-visible');
+});
+document.querySelectorAll('.cookie-settings-link').forEach(function(link){
+  link.addEventListener('click', function(e){ e.preventDefault(); cookieBanner.classList.add('is-visible'); });
 });
 </script>
 

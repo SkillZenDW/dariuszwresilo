@@ -2,6 +2,24 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'analytics_storage': 'denied',
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied'
+});
+if(localStorage.getItem('cookie_consent') === 'granted'){
+  gtag('consent', 'default', { 'analytics_storage': 'granted' });
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LL1Z4GLF9W"></script>
+<script>
+gtag('js', new Date());
+gtag('config', 'G-LL1Z4GLF9W');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ekran nie musi wygrywać — 12 psychologicznych technik dla rodziców dzieci 6–15 lat</title>
 <meta name="description" content="Odciągnij dziecko od telefonu bez krzyku i awantur. Ebook + audiobook i kurs online — 12 technik opartych na psychologii, dla rodziców dzieci 6–15 lat.">
@@ -644,6 +662,7 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
         <a href="#kontakt">Kontakt</a>
         <a href="#regulamin" data-legal="regulamin">Regulamin</a>
         <a href="#polityka" data-legal="polityka">Polityka prywatności</a>
+        <a href="#" class="cookie-settings-link">Ustawienia cookies</a>
       </div>
     </div>
   </div>
@@ -699,8 +718,8 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
       <p style="color:#F3EFE7;font-weight:600">§6. Prawa osoby, której dane dotyczą</p>
       <p>Każda osoba ma prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu wobec przetwarzania, a także prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W celu realizacji tych praw prosimy o kontakt na adres kontakt@dariuszwresilo.pl.</p>
 
-      <p style="color:#F3EFE7;font-weight:600">§7. Plik cookies</p>
-      <p>Strona może wykorzystywać pliki cookies w celach technicznych (utrzymanie sesji, poprawne działanie formularzy) oraz analitycznych. Korzystając ze strony, Klient wyraża zgodę na wykorzystanie cookies zgodnie z ustawieniami swojej przeglądarki, które może zmienić w każdym momencie.</p>
+      <p style="color:#F3EFE7;font-weight:600">§7. Pliki cookies</p>
+      <p>Strona wykorzystuje pliki cookies niezbędne do jej działania (zawsze aktywne) oraz — wyłącznie po wyrażeniu zgody w banerze cookies — pliki analityczne (Google Analytics) i marketingowe (Meta Pixel), służące do analizy ruchu i pomiaru skuteczności reklam. Zgodę można w każdej chwili wycofać lub zmienić poprzez link „Ustawienia cookies" w stopce strony.</p>
 
       <p style="color:#8FA3A8;font-style:italic;margin-top:14px">Ostatnia aktualizacja: 2026. W sprawach dotyczących ochrony danych osobowych napisz na kontakt@dariuszwresilo.pl.</p>
     </div>
@@ -761,6 +780,67 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
       });
     });
   }
+})();
+</script>
+
+<div class="cc-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Ustawienia plików cookie">
+  <div class="cc-banner-inner">
+    <p><strong>Niezbędne</strong> pliki cookie są zawsze aktywne (działanie strony i formularza). <strong>Opcjonalne</strong> — Google Analytics i Meta Pixel, do analizy ruchu i pomiaru skuteczności reklam — włączają się wyłącznie za Twoją zgodą. Więcej w <a href="#polityka" data-legal="polityka">polityce prywatności</a>.</p>
+    <div class="cc-banner-actions">
+      <button type="button" class="cc-btn cc-btn-outline" id="cookieNecessaryOnly">Tylko niezbędne</button>
+      <button type="button" class="cc-btn cc-btn-accent" id="cookieAcceptAll">Akceptuję wszystkie</button>
+    </div>
+  </div>
+</div>
+<style>
+.cc-banner{ position:fixed; left:20px; right:20px; bottom:20px; z-index:9999; max-width:640px; margin:0 auto; background:rgba(20,22,26,0.97); backdrop-filter:blur(10px); border:1px solid rgba(201,162,90,0.35); border-radius:14px; padding:22px 26px; box-shadow:0 20px 50px -20px rgba(0,0,0,0.5); transform:translateY(140%); opacity:0; transition:transform .4s ease, opacity .4s ease; pointer-events:none; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; }
+.cc-banner.is-visible{ transform:translateY(0); opacity:1; pointer-events:auto; }
+.cc-banner-inner p{ font-size:0.87rem; color:#e8e6e1; line-height:1.6; margin:0 0 16px; }
+.cc-banner-inner p a{ color:#c9a25a; text-decoration:underline; }
+.cc-banner-actions{ display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap; }
+.cc-btn{ font-family:inherit; font-size:0.78rem; font-weight:600; padding:10px 18px; border-radius:999px; cursor:pointer; border:1px solid transparent; transition:opacity .15s; }
+.cc-btn:hover{ opacity:0.85; }
+.cc-btn-outline{ background:transparent; border-color:rgba(232,230,225,0.4); color:#e8e6e1; }
+.cc-btn-accent{ background:#c9a25a; color:#1a1a1a; }
+@media(max-width:600px){ .cc-banner{ left:12px; right:12px; bottom:12px; padding:18px 20px; } .cc-banner-actions{ justify-content:stretch; } .cc-btn{ flex:1; text-align:center; } }
+</style>
+<script>
+(function(){
+  var cookieBanner = document.getElementById('cookieBanner');
+  var cookieConsent = localStorage.getItem('cookie_consent');
+
+  function loadMetaPixel(){
+    if(window.fbq) return;
+    var pixelId = '2106886550205962';
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', pixelId);
+    fbq('track', 'PageView');
+  }
+  function grantOptionalCookies(){
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    loadMetaPixel();
+  }
+  if(!cookieConsent){
+    setTimeout(function(){ cookieBanner.classList.add('is-visible'); }, 800);
+  } else if(cookieConsent === 'granted'){
+    grantOptionalCookies();
+  }
+  document.getElementById('cookieAcceptAll').addEventListener('click', function(){
+    localStorage.setItem('cookie_consent', 'granted');
+    grantOptionalCookies();
+    cookieBanner.classList.remove('is-visible');
+  });
+  document.getElementById('cookieNecessaryOnly').addEventListener('click', function(){
+    localStorage.setItem('cookie_consent', 'denied');
+    cookieBanner.classList.remove('is-visible');
+  });
+  document.querySelectorAll('.cookie-settings-link').forEach(function(link){
+    link.addEventListener('click', function(e){ e.preventDefault(); cookieBanner.classList.add('is-visible'); });
+  });
 })();
 </script>
 </body>
