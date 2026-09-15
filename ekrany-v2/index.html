@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Ekran nie musi wygrywać — wersja porównawcza (v2)</title>
+<meta name="description" content="Wersja porównawcza landing page'a — 12 psychologicznych technik dla rodziców dzieci 6–15 lat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:opsz,ital,wght@8..60,0,400;8..60,0,600;8..60,1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF7F0;
+  --paper-2:#F1E9DC;
+  --ink:#22333B;
+  --ink-soft:#4C5B62;
+  --teal:#1F4653;
+  --teal-deep:#16333D;
+  --orange:#E58B3D;
+  --orange-deep:#C9701F;
+  --leaf:#4E7A58;
+  --line:#E2D6C4;
+  --radius:20px;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --serif:'Source Serif 4',Georgia,serif;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{
+  font-family:var(--serif);
+  background:var(--paper);
+  color:var(--ink);
+  font-size:1.075rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  padding-top:76px;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.narrow{max-width:720px;margin:0 auto}
+.section{position:relative;padding:96px 0}
+.section .wrap{position:relative;z-index:1}
+.section.alt{background:var(--paper-2)}
+.section.dark{background:var(--teal-deep);color:#DDE5E4}
+.section.dark h2{color:#F3EFE7}
+.section.final{text-align:center}
+
+h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.015em}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;margin-bottom:10px}
+h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.eyebrow{display:inline-block;font-family:var(--display);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--orange-deep);margin-bottom:10px}
+.dark .eyebrow{color:#F0C896}
+
+/* ---------- cursor glow ---------- */
+.cursor-glow{position:fixed;top:0;left:0;width:440px;height:440px;margin-left:-220px;margin-top:-220px;border-radius:50%;background:radial-gradient(circle, rgba(229,139,61,.12), rgba(31,70,83,.09) 42%, transparent 72%);pointer-events:none;z-index:2;display:none;will-change:transform}
+body.has-cursor-glow .cursor-glow{display:block}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(251,247,240,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(226,214,196,.5);transition:box-shadow .3s,background .3s}
+.nav.scrolled{box-shadow:0 8px 30px rgba(34,51,59,.1);background:rgba(251,247,240,.94)}
+.nav-progress{position:absolute;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--orange),var(--leaf),var(--teal));transition:width .1s linear}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:1.02rem;color:var(--teal-deep);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.brand span{color:var(--orange-deep)}
+.v2-badge{font-size:.66rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--teal-deep);color:#F0C896;padding:4px 10px;border-radius:999px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-block;text-decoration:none;border-radius:999px;font-family:var(--display);font-weight:700;padding:14px 30px;cursor:pointer;border:none;font-size:1rem;transition:transform .18s var(--ease-out),box-shadow .18s var(--ease-out),background .18s ease}
+.btn-primary{background:var(--orange);color:#2A1A05;box-shadow:0 6px 18px rgba(201,112,31,.35)}
+.btn-primary:hover{background:var(--orange-deep);color:#fff;transform:translateY(-2px);box-shadow:0 12px 28px rgba(201,112,31,.42)}
+.btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#F3EFE7}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-small{background:var(--orange);color:#2A1A05;padding:9px 20px;font-size:.88rem}
+.btn-small:hover{background:var(--orange-deep);color:#fff}
+.btn-full{width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-price{display:inline-flex;flex-direction:column;align-items:center;gap:2px;line-height:1.15;padding:16px 36px}
+.btn-price-main{font-family:var(--display);font-weight:700;font-size:1.1rem}
+.btn-price-old{font-family:var(--display);font-weight:500;font-size:.8rem;opacity:.75;text-decoration:line-through}
+.btn-note{display:block;margin-top:12px;font-size:.85rem;color:var(--ink-soft);font-style:italic}
+.magnetic{will-change:transform}
+.btn-spinner{display:none;width:15px;height:15px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%}
+button.is-loading .btn-spinner{display:inline-block;animation:spin .7s linear infinite}
+button.is-loading .btn-label{opacity:.75}
+
+/* ---------- shimmer sweep utility ---------- */
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:0;left:-75%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);animation:shimmerSweep 3.4s ease-in-out infinite;pointer-events:none}
+
+/* ---------- reveal system ---------- */
+.reveal{opacity:0;transform:translateY(26px);filter:blur(6px)}
+.reveal.in{animation:revealIn .7s var(--ease-out) forwards;animation-delay:calc(var(--i,0) * 70ms)}
+.reveal-fade{opacity:0;filter:blur(10px)}
+.reveal-fade.in{animation:revealFadeIn .9s var(--ease-out) forwards;animation-delay:calc(var(--i,0) * 70ms)}
+.reveal-pop{opacity:0;transform:scale(.62)}
+.reveal-pop.in{animation:revealPopIn .5s var(--ease-spring) forwards;animation-delay:calc(var(--i,0) * 130ms)}
+@keyframes revealIn{to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes revealFadeIn{to{opacity:1;filter:blur(0)}}
+@keyframes revealPopIn{to{opacity:1;transform:scale(1)}}
+
+/* ---------- aurora + particles ---------- */
+.aurora{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;z-index:0;pointer-events:none}
+.aurora-1{width:520px;height:520px;background:radial-gradient(circle,rgba(229,139,61,.35),transparent 70%);top:-160px;right:-140px;animation:auroraDrift1 22s ease-in-out infinite}
+.aurora-2{width:460px;height:460px;background:radial-gradient(circle,rgba(31,70,83,.3),transparent 70%);bottom:-180px;left:-160px;animation:auroraDrift2 26s ease-in-out infinite}
+.aurora-3{width:440px;height:440px;background:radial-gradient(circle,rgba(78,122,88,.22),transparent 70%);top:-140px;left:-120px;animation:auroraDrift2 24s ease-in-out infinite}
+.aurora-4{width:480px;height:480px;background:radial-gradient(circle,rgba(229,139,61,.25),transparent 70%);bottom:-160px;right:-120px;animation:auroraDrift1 20s ease-in-out infinite}
+@keyframes auroraDrift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,30px) scale(1.08)}}
+@keyframes auroraDrift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-24px) scale(1.05)}}
+
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.particle{position:absolute;bottom:-20px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(229,139,61,.55),rgba(31,70,83,.25) 60%,transparent 75%);opacity:0;filter:blur(.5px);animation:floatUp var(--dur,12s) ease-in var(--delay,0s) infinite}
+.particles-dark .particle{background:radial-gradient(circle at 30% 30%,rgba(240,195,150,.55),rgba(255,255,255,.15) 60%,transparent 75%)}
+@keyframes floatUp{
+  0%{transform:translate(0,0) scale(.6);opacity:0}
+  10%{opacity:.65}
+  85%{opacity:.3}
+  100%{transform:translate(var(--x,0),-420px) scale(1.1);opacity:0}
+}
+
+/* ---------- spotlight cards ---------- */
+.spot-card{position:relative;isolation:isolate}
+.spot-glow{position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s;pointer-events:none;border-radius:inherit;background:radial-gradient(280px circle at var(--x,50%) var(--y,50%),rgba(229,139,61,.18),transparent 70%)}
+.spot-card:hover .spot-glow{opacity:1}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:74px 0 90px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:8px 16px;font-family:var(--display);font-weight:600;font-size:.82rem;color:var(--teal-deep);margin-bottom:22px;box-shadow:0 3px 10px rgba(34,51,59,.06)}
+.hero-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--leaf)}
+.kinetic-h1{font-size:clamp(2.1rem,4.6vw,3.2rem);font-weight:800;margin:0 0 20px}
+.kinetic-h1 .w,.kinetic-h1 .hl-sweep{display:inline-block;opacity:0;transform:translateY(18px);filter:blur(5px);animation:wordIn .65s var(--ease-out) forwards;animation-delay:calc(var(--i,0) * .055s + .05s)}
+.hl-sweep{font-style:normal;color:var(--orange-deep);position:relative}
+.hl-sweep::after{content:'';position:absolute;left:-2px;right:-2px;bottom:2px;height:.4em;background:rgba(229,139,61,.28);border-radius:3px;transform:scaleX(0);transform-origin:left;animation:underlineSweep .5s var(--ease-out) forwards;animation-delay:1.05s;z-index:-1}
+@keyframes underlineSweep{to{transform:scaleX(1)}}
+@keyframes wordIn{to{opacity:1;transform:translateY(0);filter:blur(0)}}
+.lede{font-size:1.12rem;color:var(--ink-soft);margin-bottom:14px;max-width:520px}
+.unit{font-family:var(--display);font-weight:700;font-size:.92rem;color:var(--teal-deep);margin-bottom:18px}
+.hero-formats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-family:var(--display);font-size:.85rem;font-weight:600;color:var(--teal-deep);box-shadow:0 3px 10px rgba(34,51,59,.06)}
+.hero-stats{display:flex;align-items:center;gap:24px;margin:24px 0 28px}
+.hero-stat{display:flex;flex-direction:column}
+.hero-stat-num{font-family:var(--display);font-weight:800;font-size:1.9rem;color:var(--teal-deep)}
+.hero-stat-label{font-size:.78rem;color:var(--ink-soft);line-height:1.4;margin-top:2px}
+.hero-stat-divider{width:1px;height:40px;background:var(--line)}
+.hero-cover-wrap{position:relative;animation:bookBob 4.6s ease-in-out infinite}
+.hero-cover{position:relative;max-width:380px;margin:0 auto;transition:transform .25s var(--ease-out);transform-style:preserve-3d;will-change:transform}
+.hero-cover img{width:100%;height:auto;border-radius:14px;box-shadow:0 34px 74px -20px rgba(34,51,59,.4),0 12px 28px -10px rgba(34,51,59,.28)}
+.hero-badge{position:absolute;top:-14px;right:6px;background:var(--orange-deep);color:#fff;font-family:var(--display);font-weight:800;font-size:.92rem;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 8px 20px rgba(201,112,31,.4);animation:badgePulse 2.3s ease-out infinite}
+@keyframes bookBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes badgePulse{0%{box-shadow:0 0 0 0 rgba(201,112,31,.5)}70%{box-shadow:0 0 0 16px rgba(201,112,31,0)}100%{box-shadow:0 0 0 0 rgba(201,112,31,0)}}
+
+/* ---------- bubbles ---------- */
+.bubbles{display:flex;flex-direction:column;gap:14px;margin:28px 0}
+.bubble{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px 18px 18px 4px;padding:14px 20px;font-family:var(--display);font-weight:600;font-size:.95rem;box-shadow:0 3px 10px rgba(34,51,59,.07);max-width:480px}
+.bubble.b2{margin-left:26px}
+.bubble.b3.shout{margin-left:52px;background:var(--orange);color:#fff;border-color:transparent;text-transform:uppercase;letter-spacing:.02em}
+.bubble.b3.shout.in{animation:shoutShake .5s ease .55s}
+.bubble.reply{align-self:flex-end;border-radius:18px 18px 4px 18px;background:var(--cloud,#F1E9DC);font-style:italic;font-weight:400;font-family:var(--serif)}
+@keyframes shoutShake{0%,100%{transform:scale(1) translateX(0)}20%{transform:scale(1.03) translateX(-4px)}40%{transform:scale(1.03) translateX(4px)}60%{transform:scale(1.03) translateX(-3px)}80%{transform:scale(1.03) translateX(2px)}}
+.hook-punch{margin-top:18px;font-family:var(--display);font-size:1.15rem}
+
+/* ---------- minds ---------- */
+.minds{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:36px 0}
+.mind{border-radius:var(--radius);padding:32px 28px;position:relative;background:#fff;border:1px solid var(--line)}
+.mind .tag{display:inline-block;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.mind-fast{animation:fastPulse 2.6s ease-in-out infinite}
+.mind-fast .tag{background:rgba(229,139,61,.15);color:var(--orange-deep)}
+.mind-slow{animation:slowBreathe 5s ease-in-out infinite}
+.mind-slow .tag{background:rgba(31,70,83,.12);color:var(--teal-deep)}
+@keyframes fastPulse{0%,100%{box-shadow:0 0 0 0 rgba(229,139,61,0)}50%{box-shadow:0 0 30px 3px rgba(229,139,61,.2)}}
+@keyframes slowBreathe{0%,100%{box-shadow:0 0 0 0 rgba(31,70,83,0)}50%{box-shadow:0 0 38px 5px rgba(31,70,83,.14)}}
+.minds-verdict{text-align:center;margin-top:8px;font-family:var(--display);font-weight:600}
+
+/* ---------- tech grid ---------- */
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.tech{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+.tech:hover{transform:translateY(-5px);box-shadow:0 18px 40px -12px rgba(34,51,59,.18)}
+.tech .num{display:inline-block;font-family:var(--display);font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--orange-deep);background:rgba(229,139,61,.12);padding:4px 11px;border-radius:999px;margin-bottom:12px}
+.tech.more{background:var(--teal-deep);border-color:var(--teal-deep)}
+.tech.more .num{background:rgba(255,255,255,.15);color:#F0C896}
+.tech.more h3,.tech.more p{color:#F3EFE7}
+
+/* ---------- checklist / check rows ---------- */
+.checklist{list-style:none;margin:26px 0;display:flex;flex-direction:column;gap:16px}
+.check-row{display:flex;align-items:flex-start;gap:14px;font-size:1.02rem}
+.check-row.center{justify-content:center;text-align:left}
+.check-icon{flex:none;width:28px;height:28px;border-radius:50%;background:rgba(78,122,88,.14);display:flex;align-items:center;justify-content:center;color:var(--leaf)}
+.dark .check-icon{background:rgba(240,195,150,.16);color:#F0C896}
+.check-icon svg{width:16px;height:16px}
+.check-icon svg path{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:26;stroke-dashoffset:26}
+.check-icon.in svg path{animation:checkDraw .55s var(--ease-out) forwards;animation-delay:calc(var(--i,0) * 110ms + .05s)}
+@keyframes checkDraw{to{stroke-dashoffset:0}}
+.checklist-note{margin-top:8px;font-weight:600;font-family:var(--display)}
+
+/* ---------- results ---------- */
+.results-list{margin:30px 0;display:flex;flex-direction:column;gap:14px;align-items:center}
+.parent-payoff{margin-top:18px;font-family:var(--display);font-size:1.15rem;font-weight:600;color:#F3EFE7}
+.results-caveat{margin-top:14px;font-size:.85rem;color:#AEBDC1;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* ---------- pricing ---------- */
+.price-lead{max-width:720px}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch;margin-top:48px}
+.pcard{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:38px 32px 34px;display:flex;flex-direction:column;height:100%;transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 24px 50px -18px rgba(34,51,59,.22)}
+.presale{display:inline-block;align-self:flex-start;background:var(--teal);color:#fff;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.ribbon{display:inline-block;align-self:flex-start;background:linear-gradient(120deg,var(--orange),var(--orange-deep));color:#fff;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:6px 16px;border-radius:999px;margin-bottom:18px;box-shadow:0 6px 16px rgba(201,112,31,.35)}
+.desc{color:var(--ink-soft);font-size:.98rem}
+.pricebox{margin:22px 0;padding-top:18px;border-top:1px dashed var(--line)}
+.old-price{position:relative;display:inline-block;font-family:var(--display);color:var(--ink-soft);font-size:1rem}
+.old-price::after{content:'';position:absolute;left:0;top:52%;height:2px;background:var(--ink-soft);width:0%}
+.price-grid.in .old-price::after{animation:strikeDraw .5s ease .4s forwards}
+@keyframes strikeDraw{to{width:106%}}
+.now-price{font-family:var(--display);font-weight:800;font-size:2.1rem;color:var(--ink)}
+.save-badge{display:inline-block;margin-top:8px;background:rgba(78,122,88,.14);color:var(--leaf);font-family:var(--display);font-weight:700;font-size:.82rem;padding:5px 12px;border-radius:999px}
+.pcard ul{list-style:none;margin:20px 0 26px;display:flex;flex-direction:column;gap:11px}
+.pcard ul li{position:relative;padding-left:26px;font-size:.95rem;color:var(--ink-soft)}
+.pcard ul li::before{content:'✓';position:absolute;left:0;top:0;color:var(--leaf);font-weight:700}
+.premiere-note{font-size:.78rem;color:var(--ink-soft);font-style:italic;margin-top:10px;text-align:center}
+.guarantee-note{font-size:.82rem;color:var(--ink-soft);margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.pcard-featured-wrap{position:relative;border-radius:26px;padding:3px;height:100%;background:conic-gradient(from var(--angle,0deg),var(--orange),var(--leaf),var(--teal),var(--orange-deep),var(--orange));animation:rotateBorder 7s linear infinite;box-shadow:0 30px 70px -20px rgba(31,70,83,.35)}
+.pcard-featured-wrap .pcard{border:none;border-radius:23px;margin:0}
+@property --angle{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes rotateBorder{to{--angle:360deg}}
+
+/* ---------- faq ---------- */
+.faq{margin-top:30px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:0;padding:22px 4px;font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink);cursor:pointer;text-align:left}
+.faq-icon{font-size:1.3rem;color:var(--orange-deep);transition:transform .35s var(--ease-spring);flex:none}
+.faq-q[aria-expanded="true"] .faq-icon{transform:rotate(45deg)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease-out)}
+.faq-q[aria-expanded="true"] + .faq-a{grid-template-rows:1fr}
+.faq-a-inner{overflow:hidden}
+.faq-a-inner p{padding:0 4px 22px;color:var(--ink-soft)}
+
+/* ---------- final cta ---------- */
+.clamp{margin:26px 0;font-family:var(--display);font-size:1.3rem;font-weight:700}
+.final-ctas{display:flex;gap:16px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+
+/* ---------- contact ---------- */
+.contact-box{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:36px;box-shadow:0 20px 50px -24px rgba(34,51,59,.2)}
+.field-float{position:relative;margin-bottom:22px}
+.field-float input{width:100%;padding:20px 16px 8px;border:1.5px solid var(--line);border-radius:12px;font-family:var(--serif);font-size:1rem;background:#fff;transition:border-color .2s,box-shadow .2s}
+.field-float label{position:absolute;left:16px;top:19px;color:var(--ink-soft);font-size:1rem;pointer-events:none;transition:all .2s var(--ease-out)}
+.field-float input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(229,139,61,.15)}
+.field-float input:focus + label,
+.field-float input:not(:placeholder-shown) + label{top:7px;font-size:.72rem;font-weight:700;color:var(--orange-deep);letter-spacing:.02em}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--ink-soft);margin:18px 0 22px;line-height:1.5}
+.consent input{margin-top:3px}
+.consent a{color:var(--teal-deep)}
+.form-msg{display:none;margin-top:14px;text-align:center;font-weight:600;color:var(--leaf)}
+.form-msg.show{display:block}
+
+/* ---------- footer ---------- */
+footer{background:var(--teal-deep);color:#AEBDC1}
+.footer-top{padding:60px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.footer-brand{font-family:var(--display);font-weight:800;font-size:1.2rem;color:#F3EFE7;margin-bottom:12px}
+.footer-brand span{color:var(--orange)}
+.footer-col h4{font-family:var(--display);color:#F3EFE7;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.footer-col a{display:block;color:#AEBDC1;text-decoration:none;font-size:.9rem;margin-bottom:10px}
+.footer-col a:hover{color:#fff}
+.legal-panel{display:none;background:var(--teal-deep);color:#AEBDC1;padding:50px 0;font-size:.88rem;line-height:1.7;border-top:1px solid rgba(255,255,255,.08)}
+.legal-panel.show{display:block}
+.legal-panel h4{color:#F3EFE7;font-family:var(--display);margin-bottom:18px;font-size:1.3rem}
+.legal-panel p{margin-bottom:12px}
+.footer-legal{border-top:1px solid rgba(255,255,255,.1);padding:20px 0;text-align:center;font-size:.78rem;color:#7E9096}
+
+/* ---------- compare fab ---------- */
+.compare-fab{position:fixed;right:20px;bottom:20px;z-index:600;background:var(--teal-deep);color:#F3EFE7;font-family:var(--display);font-weight:700;font-size:.82rem;padding:12px 18px;border-radius:999px;text-decoration:none;box-shadow:0 14px 34px -10px rgba(22,51,61,.5);transition:transform .2s var(--ease-out),box-shadow .2s var(--ease-out)}
+.compare-fab:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(22,51,61,.6)}
+
+@keyframes shimmerSweep{0%{left:-75%}60%,100%{left:130%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero{padding:44px 0 60px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-cover{max-width:300px}
+  .minds{grid-template-columns:1fr}
+  .tech-grid{grid-template-columns:1fr 1fr}
+  .price-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+  .section{padding:64px 0}
+}
+@media (max-width:600px){
+  .tech-grid{grid-template-columns:1fr}
+  .hero-stats{gap:16px}
+  .compare-fab{font-size:.72rem;padding:10px 14px;right:14px;bottom:14px}
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .reveal,.reveal-pop,.reveal-fade,.check-icon{opacity:1 !important;transform:none !important;filter:none !important}
+  .particle,.aurora{display:none !important}
+  .cursor-glow{display:none !important}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<div class="nav" id="nav">
+  <div class="nav-progress" id="navProgress"></div>
+  <div class="wrap nav-inner">
+    <div class="brand">Ekran nie musi <span>wygrywać.</span> <span class="v2-badge shimmer">v2 · efekty</span></div>
+    <a class="btn btn-small magnetic" href="#pakiety">Zobacz oferty</a>
+  </div>
+</div>
+
+<header class="hero" id="hero">
+  <div class="aurora aurora-1" aria-hidden="true"></div>
+  <div class="aurora aurora-2" aria-hidden="true"></div>
+  <div class="particles" id="heroParticles" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-pill shimmer"><span class="dot"></span> Dostępne od razu — bez czekania</span>
+      <h1 class="kinetic-h1">
+        <span class="w" style="--i:0">Odciągnij</span> <span class="w" style="--i:1">dziecko</span> <span class="w" style="--i:2">od</span> <span class="w" style="--i:3">telefonu</span><br>
+        <em class="hl-sweep w" style="--i:4">bez krzyku</em> <span class="w" style="--i:5">i</span> <span class="w" style="--i:6">bez</span> <span class="w" style="--i:7">awantur.</span>
+      </h1>
+      <p class="lede reveal" style="--i:8">12 psychologicznych technik, które ustawiają sytuację tak, że dziecko <b>samo</b> odkłada ekran. Zacznij od kompletu <b>ebook + audiobook</b> — czytaj albo słuchaj, jak Ci wygodniej.</p>
+      <p class="unit reveal" style="--i:9">Komplet ebook + audiobook · dla dzieci 6–15 lat</p>
+      <div class="hero-formats reveal" style="--i:10">
+        <span class="chip">📖 Ebook PDF</span>
+        <span class="chip">🎧 Audiobook mp3</span>
+        <span class="chip">⚡ Dostęp w 2 minuty</span>
+      </div>
+      <div class="hero-stats reveal" style="--i:11">
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="230" data-suffix="+">0</span>
+          <span class="hero-stat-label">godzin miesięcznie<br>dziecko przed telefonem</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="2600000">0</span>
+          <span class="hero-stat-label">dzieci w Polsce<br>codziennie w sieci</span>
+        </div>
+      </div>
+      <a class="btn btn-primary btn-price magnetic shimmer reveal" style="--i:12" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">
+        <span class="btn-price-main">Zamawiam za 47 zł</span>
+        <span class="btn-price-old">zamiast 77 zł</span>
+      </a>
+      <span class="btn-note reveal" style="--i:13">albo zobacz też kurs online (przedsprzedaż) niżej ↓</span>
+    </div>
+    <div class="hero-cover-wrap reveal-fade" style="--i:6">
+      <div class="hero-cover" id="tiltCard">
+        <span class="hero-badge">−39%</span>
+        <img src="../images/ekran-mockup.jpg" width="1443" height="2048" alt="Okładka: Ekran nie musi wygrywać — 12 psychologicznych trików dla dzieci 6–15 lat, Dariusz Wresiło">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HOOK -->
+<section class="section alt">
+  <div class="wrap narrow">
+    <span class="eyebrow reveal">Znasz to na pamięć</span>
+    <h2 class="reveal">Ta sama scena. Każdego dnia.</h2>
+    <div class="bubbles">
+      <div class="bubble reveal-pop" style="--i:0">„Odłóż już ten telefon, dobrze?"</div>
+      <div class="bubble b2 reveal-pop" style="--i:1">„Mówiłam: odkładamy telefon. Teraz."</div>
+      <div class="bubble b3 shout reveal-pop" style="--i:2">„WYŁĄCZ TO NATYCHMIAST!"</div>
+      <div class="bubble reply reveal-pop" style="--i:3">…dziesięć minut później wszystko zaczyna się od nowa.</div>
+    </div>
+    <p class="reveal">Wieczorem jesteś zmęczony nie pracą. Tylko tą jedną walką, która wraca codziennie — i którą codziennie przegrywasz, nawet gdy „wygrasz".</p>
+    <p class="hook-punch reveal">To nie znaczy, że jesteś złym rodzicem.<br>To znaczy, że walczysz <strong>nie tą bronią, co trzeba.</strong></p>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section class="section">
+  <div class="wrap">
+    <div class="narrow">
+      <span class="eyebrow reveal">Dlaczego rozsądek przegrywa z telefonem</span>
+      <h2 class="reveal">W głowie dziecka mieszkają dwie osoby. Ty rozmawiasz z niewłaściwą.</h2>
+    </div>
+    <div class="minds">
+      <div class="mind mind-fast reveal" style="--i:0">
+        <span class="tag">Ten sięga po telefon</span>
+        <h3>Szybki i emocjonalny</h3>
+        <p>Działa błyskawicznie, bez zastanowienia. Zawsze wybiera to, co łatwe i przyjemne tu i teraz. Wyciąga rękę po ekran, zanim dziecko w ogóle pomyśli. <b>Nie słucha argumentów.</b></p>
+      </div>
+      <div class="mind mind-slow reveal" style="--i:1">
+        <span class="tag">Do tego mówisz Ty</span>
+        <h3>Mądry i rozsądny</h3>
+        <p>Rozumie, że sen jest ważny, że warto odrobić lekcje, że życie to nie tylko ekran. Ale jest <b>wolny, szybko się męczy</b> — i w chwili, gdy prosisz o odłożenie telefonu, w ogóle nie ma go przy głosie.</p>
+      </div>
+    </div>
+    <p class="minds-verdict reveal">Dlatego czujesz, jakbyś mówił do ściany. <strong>Bo mówisz.</strong><br>Ten poradnik uczy Cię prowadzić tego szybkiego — a nie przekonywać tego mądrego.</p>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="narrow">
+      <span class="eyebrow reveal">Co jest w środku</span>
+      <h2 class="reveal">12 technik. Każda z gotowymi zdaniami, które powiesz od razu.</h2>
+    </div>
+    <div class="tech-grid">
+      <div class="tech spot-card reveal" style="--i:0">
+        <span class="spot-glow" aria-hidden="true"></span>
+        <span class="num">Technika 01</span>
+        <h3>Pytanie zamiast rozkazu</h3>
+        <p>Zamień „wyłącz to natychmiast" w jedno zdanie, po którym dziecko <b>samo</b> kończy grać — i broni tej decyzji, zamiast walczyć z Tobą.</p>
+      </div>
+      <div class="tech spot-card reveal" style="--i:1">
+        <span class="spot-glow" aria-hidden="true"></span>
+        <span class="num">Technika 02</span>
+        <h3>Drogowskaz tożsamości</h3>
+        <p>Najmocniejsza technika w książce. Jedno zdanie, po którym dziecko zaczyna potwierdzać obraz, który mu dajesz — zamiast tego, z którym walczysz od miesięcy.</p>
+      </div>
+      <div class="tech spot-card reveal" style="--i:2">
+        <span class="spot-glow" aria-hidden="true"></span>
+        <span class="num">Technika 06</span>
+        <h3>Dobre zakończenie</h3>
+        <p>To, <b>jak</b> kończy się granie, decyduje o tym, jak mocno dziecko przywiąże się do telefonu następnym razem. Zmień finał — zmienisz wszystko.</p>
+      </div>
+      <div class="tech spot-card reveal" style="--i:3">
+        <span class="spot-glow" aria-hidden="true"></span>
+        <span class="num">Technika 11</span>
+        <h3>Ciche ustawienie domu</h3>
+        <p>Jeden prosty zabieg — bez rozmów, bez negocjacji — który odzyskuje dziecku godzinę snu. Na dobre.</p>
+      </div>
+      <div class="tech spot-card reveal" style="--i:4">
+        <span class="spot-glow" aria-hidden="true"></span>
+        <span class="num">Technika 07</span>
+        <h3>Mały pierwszy krok</h3>
+        <p>Dlaczego prośba o „godzinę zabawy" zawsze przegrywa, a prośba o „dwie minuty" wygrywa — i sprawia, że dziecko zostaje samo z siebie.</p>
+      </div>
+      <div class="tech spot-card more reveal" style="--i:5">
+        <span class="spot-glow" aria-hidden="true"></span>
+        <span class="num">+ 7 kolejnych</span>
+        <h3>I fundament: Twój autorytet</h3>
+        <p>Osobny rozdział o tym, jak odbudować autorytet bez surowości i bez krzyku — żeby wszystkie techniki miały na czym stanąć.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="section">
+  <div class="wrap narrow">
+    <span class="eyebrow reveal">Dla kogo to jest</span>
+    <h2 class="reveal">Ten materiał napisano z myślą o Twoim wieczorze, jeśli…</h2>
+    <ul class="checklist">
+      <li class="check-row reveal" style="--i:0"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>masz szczerze dosyć tej samej walki o wyłączenie telefonu — każdego dnia</span></li>
+      <li class="check-row reveal" style="--i:1"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>rozmowy o ekranie kończą się krzykiem albo trzaśnięciem drzwiami</span></li>
+      <li class="check-row reveal" style="--i:2"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span><b>nie chcesz</b> być surowym rodzicem — chcesz współpracy, nie posłuszeństwa ze strachu</span></li>
+      <li class="check-row reveal" style="--i:3"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>Twoje dziecko ma 6–15 lat i coraz trudniej „po prostu" mu coś powiedzieć</span></li>
+      <li class="check-row reveal" style="--i:4"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>wolisz gotowe zdania i konkretne kroki niż kolejny wykład o szkodliwości ekranów</span></li>
+    </ul>
+    <p class="checklist-note reveal">Kiwnąłeś głową choć dwa razy? Wybierz swój format niżej.</p>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section dark">
+  <div class="particles particles-dark" id="resultsParticles" aria-hidden="true"></div>
+  <div class="wrap narrow" style="text-align:center">
+    <span class="eyebrow reveal">Co się zmienia</span>
+    <h2 class="reveal" style="color:#F3EFE7">Rodzice opisują ten sam schemat —<br>już po 2–3 tygodniach.</h2>
+    <div class="results-list">
+      <p class="check-row center reveal" style="--i:0"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>Dziecko <strong>lepiej sypia.</strong></span></p>
+      <p class="check-row center reveal" style="--i:1"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>Rzadziej wybucha bez powodu.</span></p>
+      <p class="check-row center reveal" style="--i:2"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>Wraca do rzeczy, o których zapomniało, że lubi.</span></p>
+      <p class="check-row center reveal" style="--i:3"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>Łatwiej siada do lekcji.</span></p>
+      <p class="check-row center reveal" style="--i:4"><span class="check-icon"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg></span><span>W domu jest ciszej — bo <strong>znika codzienna walka.</strong></span></p>
+    </div>
+    <p class="parent-payoff reveal">A Ty? Wieczorem nie szykujesz się już do <strong>kolejnej rundy.</strong> Siadacie przy stole i po prostu — jest cicho.</p>
+    <p class="results-caveat reveal">To nie obietnica cudu. To po prostu to, co dzieje się najczęściej, gdy dziecko odzyskuje przestrzeń poza ekranem — a rodzic przestaje walczyć siłą i zaczyna działać mądrze.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section alt" id="pakiety">
+  <div class="aurora aurora-3" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="price-lead">
+      <span class="eyebrow reveal">Wybierz swój format</span>
+      <h2 class="reveal">Dwa sposoby, żeby zacząć — Ty wybierasz, jak głęboko wchodzisz.</h2>
+      <p class="reveal" style="margin-top:14px;color:var(--ink-soft)">Kurs on-line jest w przedsprzedaży — rezerwujesz miejsce teraz, po cenie niższej niż w dniu startu.</p>
+    </div>
+
+    <div class="price-grid reveal" id="priceGrid">
+
+      <!-- KURS ONLINE -->
+      <div class="pcard">
+        <span class="presale shimmer">Przedsprzedaż</span>
+        <h3>Kurs on-line</h3>
+        <p class="desc">4 godziny video i audio — techniki pokazane krok po kroku, z ćwiczeniami do wdrożenia w Twoim domu. To mniej, niż kosztuje jedna wizyta u specjalisty — a zostaje z Tobą na zawsze.</p>
+        <div class="pricebox">
+          <div class="old-price">577 zł</div>
+          <div class="now-price"><span class="count-price" data-count="297">0</span> zł</div>
+          <div class="save-badge">Oszczędzasz 280 zł (−49%)</div>
+        </div>
+        <ul>
+          <li>12 modułów video (4h łącznie)</li>
+          <li><strong>Bonus:</strong> karty z gotowymi zdaniami do wydruku — powieś na lodówce</li>
+          <li>Dostęp na zawsze, oglądasz w swoim tempie</li>
+          <li>Cena przedsprzedażowa — rośnie po starcie</li>
+        </ul>
+        <a class="btn btn-primary btn-full magnetic" href="#kontakt">Rezerwuję miejsce — 297 zł</a>
+        <p class="premiere-note">Cena premierowa — obowiązuje w okresie przedsprzedaży.</p>
+        <p class="guarantee-note"><strong>Gwarancja bezpiecznego startu:</strong> nie spodoba się po starcie kursu? Napisz w ciągu 14 dni od uruchomienia — zwracam całość.</p>
+      </div>
+
+      <!-- EBOOK + AUDIOBOOK (polecane) -->
+      <div class="pcard-featured-wrap">
+        <div class="pcard featured spot-card">
+          <span class="spot-glow" aria-hidden="true"></span>
+          <span class="ribbon shimmer">Polecane · start tutaj</span>
+          <h3>Ebook + Audiobook</h3>
+          <p class="desc">Czytaj wieczorem albo słuchaj w drodze do pracy. Dostęp od razu — zaczynasz jeszcze dziś.</p>
+          <div class="pricebox">
+            <div class="old-price">77 zł</div>
+            <div class="now-price"><span class="count-price" data-count="47">0</span> zł</div>
+            <div class="save-badge">Oszczędzasz 30 zł (−39%)</div>
+          </div>
+          <ul>
+            <li>Ebook PDF — 20 stron, do druku lub na ekran</li>
+            <li>Audiobook mp3 — słuchasz w aucie, na spacerze</li>
+            <li>Dostęp natychmiast po zakupie</li>
+            <li>Najniższy próg wejścia — zacznij tu, dołóż resztę później</li>
+          </ul>
+          <a class="btn btn-primary btn-full magnetic" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">Zamawiam za 47 zł</a>
+          <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
+          <p class="guarantee-note"><strong>Wypróbuj bez ryzyka:</strong> jeśli żadna z technik nie zadziała w Twoim domu w ciągu 14 dni, napisz — zwracam pieniądze.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="wrap narrow">
+    <span class="eyebrow reveal">Zanim zapytasz</span>
+    <h2 class="reveal">Pytania, które zadaje prawie każdy rodzic</h2>
+    <div class="faq">
+      <div class="faq-item reveal" style="--i:0">
+        <button class="faq-q" aria-expanded="false">
+          <span>Czy to nie jest manipulacja dzieckiem?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Nie — jeśli robisz to <em>dla</em> dziecka, a nie przeciwko niemu. To ta sama zasada, co owoce na widoku i chipsy w szafce: nie zakazujesz, tylko sprawiasz, że dobry wybór jest łatwiejszy. Materiał wprost pokazuje granicę i ostrzega przed technikami użytymi źle (fałszywy wybór, puste obietnice) — bo to jedyne, co naprawdę niszczy zaufanie dziecka.</p></div></div>
+      </div>
+      <div class="faq-item reveal" style="--i:1">
+        <button class="faq-q" aria-expanded="false">
+          <span>Mam nastolatka, a nie małe dziecko. Czy to zadziała?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Materiał jest napisany pod cały przedział 6–15 lat — z uwzględnieniem, że starsze dzieci reagują inaczej: mocniej na presję grupy rówieśniczej i na potrzebę bycia traktowanym poważnie. Każda technika ma wskazówkę, jak dopasować ją do wieku dziecka.</p></div></div>
+      </div>
+      <div class="faq-item reveal" style="--i:2">
+        <button class="faq-q" aria-expanded="false">
+          <span>Który format wybrać: ebook czy kurs?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Jeśli chcesz zacząć dziś wieczorem — wybierz ebook + audiobook (47 zł), masz dostęp natychmiast. Jeśli wolisz zobaczyć techniki „na żywo" i mieć ćwiczenia do wdrożenia krok po kroku — kurs on-line (297 zł w przedsprzedaży). Można też wybrać oba formaty naraz.</p></div></div>
+      </div>
+      <div class="faq-item reveal" style="--i:3">
+        <button class="faq-q" aria-expanded="false">
+          <span>Co znaczy „przedsprzedaż" przy kursie?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Rezerwujesz swoje miejsce po cenie niższej niż ta, która będzie obowiązywać po starcie. Kurs jest w przygotowaniu — dostęp nastąpi w najbliższym czasie, o czym poinformujemy mailowo.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="section dark final">
+  <div class="aurora aurora-4" aria-hidden="true"></div>
+  <div class="wrap narrow" style="text-align:center">
+    <span class="eyebrow reveal">Zacznij od jednego zdania</span>
+    <h2 class="reveal">Nie musisz dziś zmieniać całego rodzicielstwa.</h2>
+    <p class="reveal" style="margin-top:20px;color:#DDE5E4">Wystarczy, że dziś wieczorem powiesz <b>jedno zdanie</b> z tego poradnika — zamiast zwykłego „wyłącz to natychmiast". Jeden mały krok. Resztę dziecko często robi już samo.</p>
+    <p class="clamp reveal">Ekran nie musi wygrywać.<br><strong>I od dziś — nie musi.</strong></p>
+    <div class="final-ctas">
+      <a class="btn btn-primary magnetic reveal" href="#pakiety">Wybieram swój pakiet</a>
+      <a class="btn btn-outline magnetic reveal" href="#kontakt">Zostaw kontakt</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="kontakt">
+  <div class="wrap narrow">
+    <div style="text-align:center;margin-bottom:36px">
+      <span class="eyebrow reveal">Zostaw kontakt</span>
+      <h2 class="reveal">Zarezerwuj swoje miejsce lub zapytaj o szczegóły</h2>
+    </div>
+    <div class="contact-box spot-card reveal">
+      <span class="spot-glow" aria-hidden="true"></span>
+      <p class="lede">Zostaw imię i e-mail — wyślemy Ci link do zakupu i informacje o starcie kursu.</p>
+      <form id="contactForm" action="https://formsubmit.co/kontakt@dariuszwresilo.pl" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Nowe zgłoszenie — Ekran nie musi wygrywać (wersja porównawcza v2)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="field-float">
+          <input type="text" id="cf-name" name="name" placeholder=" " required>
+          <label for="cf-name">Twoje imię</label>
+        </div>
+        <div class="field-float">
+          <input type="email" id="cf-email" name="email" placeholder=" " required>
+          <label for="cf-email">Adres e-mail</label>
+        </div>
+        <label class="consent">
+          <input type="checkbox" required>
+          <span>Zgadzam się na przetwarzanie moich danych w celu kontaktu w sprawie zakupu, zgodnie z <a href="#polityka" data-legal="polityka">Polityką prywatności</a>.</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-full magnetic">
+          <span class="btn-label">Wyślij</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+        <p class="form-msg" id="formMsg">Dziękujemy! Sprawdź swoją skrzynkę e-mail — wkrótce się odezwiemy.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="wrap footer-grid">
+      <div>
+        <div class="footer-brand">Ekran nie musi <span>wygrywać.</span></div>
+        <p style="font-size:.9rem;max-width:340px;color:#AEBDC1">12 psychologicznych technik dla rodziców dzieci 6–15 lat. Ebook, audiobook i kurs on-line.</p>
+        <p style="font-size:.82rem;max-width:340px;color:#7E9096;margin-top:16px;line-height:1.7">SkillZen Dariusz Wresiło<br>NIP 7382034650 · REGON 123122564<br><a href="mailto:kontakt@dariuszwresilo.pl" style="color:#AEBDC1">kontakt@dariuszwresilo.pl</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Produkty</h4>
+        <a href="#pakiety">Kurs on-line — 297 zł</a>
+        <a href="#pakiety">Ebook + Audiobook — 47 zł</a>
+      </div>
+      <div class="footer-col">
+        <h4>Informacje</h4>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#regulamin" data-legal="regulamin">Regulamin</a>
+        <a href="#polityka" data-legal="polityka">Polityka prywatności</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-panel" id="panel-regulamin">
+    <div class="wrap">
+      <h4>Regulamin sprzedaży</h4>
+      <p style="color:#F3EFE7;font-weight:600;margin-top:4px">§1. Sprzedawca</p>
+      <p>Sprzedawcą produktów dostępnych na niniejszej stronie jest SkillZen Dariusz Wresiło, NIP 7382034650, REGON 123122564, adres e-mail kontaktowy: kontakt@dariuszwresilo.pl (dalej: „Sprzedawca").</p>
+      <p style="color:#F3EFE7;font-weight:600">§2. Przedmiot regulaminu</p>
+      <p>Regulamin określa zasady zakupu i korzystania z produktów oferowanych pod marką „Ekran nie musi wygrywać": ebooka, audiobooka oraz kursu on-line (dalej łącznie: „Produkty"). Regulamin obowiązuje Klientów dokonujących zakupu przez stronę internetową Sprzedawcy.</p>
+      <p style="color:#F3EFE7;font-weight:600">§3. Zamówienia i płatności</p>
+      <p>Zamówienie składane jest poprzez formularz kontaktowy lub bezpośredni proces zakupu wskazany na stronie. Ceny podane na stronie są cenami brutto, wyrażonymi w złotych polskich. Płatność następuje z góry, przed realizacją zamówienia, za pomocą metody wskazanej w procesie zakupu.</p>
+      <p style="color:#F3EFE7;font-weight:600">§4. Realizacja zamówień i przedsprzedaż</p>
+      <p>Produkty cyfrowe (ebook, audiobook) są dostarczane automatycznie, drogą elektroniczną, niezwłocznie po zaksięgowaniu płatności — nie później niż w ciągu 24 godzin. Produkt oznaczony jako „przedsprzedaż" (kurs on-line) realizowany jest w terminie wskazanym w wiadomości e-mail przesłanej po dokonaniu zakupu; Sprzedawca zobowiązuje się poinformować Klienta o przewidywanym terminie dostępności.</p>
+      <p style="color:#F3EFE7;font-weight:600">§5. Prawo odstąpienia od umowy</p>
+      <p>Klient będący konsumentem ma prawo odstąpić od umowy w terminie 14 dni od dnia zakupu bez podawania przyczyny, zgodnie z ustawą o prawach konsumenta. W przypadku produktów cyfrowych (ebook, audiobook, dostęp do kursu on-line) prawo odstąpienia wygasa w momencie rozpoczęcia dostarczania treści, jeśli Klient wyraził na to wyraźną zgodę i został poinformowany o utracie prawa odstąpienia przed rozpoczęciem realizacji.</p>
+      <p style="color:#F3EFE7;font-weight:600">§6. Reklamacje</p>
+      <p>Reklamacje dotyczące zakupionych Produktów można składać na adres e-mail kontakt@dariuszwresilo.pl. Sprzedawca rozpatruje reklamację w terminie 14 dni od jej otrzymania i informuje Klienta o wyniku na wskazany adres e-mail.</p>
+      <p style="color:#F3EFE7;font-weight:600">§7. Postanowienia końcowe</p>
+      <p>W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy prawa polskiego, w tym Kodeksu cywilnego oraz ustawy o prawach konsumenta. Sprzedawca zastrzega sobie prawo do zmiany regulaminu; zmiany nie mają wpływu na zamówienia złożone przed ich wejściem w życie.</p>
+      <p style="color:#8FA3A8;font-style:italic;margin-top:14px">Ostatnia aktualizacja: 2026. W razie pytań dotyczących zamówienia napisz na kontakt@dariuszwresilo.pl.</p>
+    </div>
+  </div>
+
+  <div class="legal-panel" id="panel-polityka">
+    <div class="wrap">
+      <h4>Polityka prywatności</h4>
+      <p style="color:#F3EFE7;font-weight:600;margin-top:4px">§1. Administrator danych</p>
+      <p>Administratorem danych osobowych przetwarzanych w związku z korzystaniem z niniejszej strony i zakupem Produktów jest SkillZen Dariusz Wresiło, NIP 7382034650, REGON 123122564, e-mail: kontakt@dariuszwresilo.pl.</p>
+      <p style="color:#F3EFE7;font-weight:600">§2. Jakie dane zbieramy i w jakim celu</p>
+      <p>Poprzez formularz kontaktowy oraz proces zakupu zbierane są: imię oraz adres e-mail. Dane przetwarzane są w celu: (a) realizacji zamówienia i kontaktu w jego sprawie, (b) udzielenia odpowiedzi na zapytanie, (c) — po wyrażeniu odrębnej, dobrowolnej zgody — wysyłki treści marketingowych i informacji o nowych produktach.</p>
+      <p style="color:#F3EFE7;font-weight:600">§3. Podstawa prawna przetwarzania</p>
+      <p>Dane przetwarzane są na podstawie: art. 6 ust. 1 lit. b RODO (wykonanie umowy / realizacja zamówienia), art. 6 ust. 1 lit. a RODO (zgoda — w przypadku newslettera) oraz art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes administratora, np. obsługa zapytań).</p>
+      <p style="color:#F3EFE7;font-weight:600">§4. Okres przechowywania danych</p>
+      <p>Dane związane z realizacją zamówienia przechowywane są przez okres wymagany przepisami prawa podatkowego i rachunkowego. Dane przetwarzane na podstawie zgody (newsletter) przechowywane są do momentu jej wycofania.</p>
+      <p style="color:#F3EFE7;font-weight:600">§5. Odbiorcy danych</p>
+      <p>Dane mogą być przekazywane podmiotom niezbędnym do realizacji usługi: operatorowi płatności, systemowi mailingowemu / CRM oraz dostawcy hostingu. Sprzedawca nie przekazuje danych podmiotom trzecim w celach marketingowych bez odrębnej zgody.</p>
+      <p style="color:#F3EFE7;font-weight:600">§6. Prawa osoby, której dane dotyczą</p>
+      <p>Każda osoba ma prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu wobec przetwarzania, a także prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W celu realizacji tych praw prosimy o kontakt na adres kontakt@dariuszwresilo.pl.</p>
+      <p style="color:#F3EFE7;font-weight:600">§7. Pliki cookies</p>
+      <p>Ta wersja porównawcza nie zawiera skryptów analitycznych ani reklamowych — nie są ustawiane żadne pliki cookie poza technicznie niezbędnymi do działania formularza.</p>
+      <p style="color:#8FA3A8;font-style:italic;margin-top:14px">Ostatnia aktualizacja: 2026. W sprawach dotyczących ochrony danych osobowych napisz na kontakt@dariuszwresilo.pl.</p>
+    </div>
+  </div>
+
+  <div class="footer-legal">
+    <div class="wrap">© 2026 „Ekran nie musi wygrywać." · Wszystkie prawa zastrzeżone · wersja porównawcza v2</div>
+  </div>
+</footer>
+
+<a href="../ekrany/index.html" class="compare-fab magnetic" target="_blank" rel="noopener">Zobacz oryginał ↗</a>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(pointer: fine)').matches;
+
+  /* reveal on scroll */
+  var revealEls = document.querySelectorAll('.reveal, .reveal-pop, .reveal-fade, .check-icon');
+  if(reduced){
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold:.15 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* count-up numbers */
+  function countUp(el, target, suffix){
+    var dur = 1500;
+    var start = performance.now();
+    function tick(now){
+      var p = Math.min((now-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      var val = Math.round(target*eased);
+      el.textContent = val.toLocaleString('pl-PL') + (suffix||'');
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  var countTargets = document.querySelectorAll('[data-count]');
+  if(countTargets.length){
+    var countIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target;
+          var val = parseInt(el.getAttribute('data-count'), 10);
+          var suffix = el.getAttribute('data-suffix') || '';
+          if(reduced){ el.textContent = val.toLocaleString('pl-PL') + suffix; }
+          else { countUp(el, val, suffix); }
+          countIO.unobserve(el);
+        }
+      });
+    }, { threshold:.4 });
+    countTargets.forEach(function(el){ countIO.observe(el); });
+  }
+
+  /* nav scroll state + progress bar */
+  var nav = document.getElementById('nav');
+  var navProgress = document.getElementById('navProgress');
+  function onScroll(){
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight>0 ? (scrollTop/docHeight)*100 : 0;
+    if(navProgress) navProgress.style.width = pct+'%';
+    if(nav) nav.classList.toggle('scrolled', scrollTop>10);
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* cursor glow */
+  var glow = document.querySelector('.cursor-glow');
+  if(glow && fine && !reduced){
+    document.body.classList.add('has-cursor-glow');
+    window.addEventListener('mousemove', function(e){
+      glow.style.transform = 'translate('+e.clientX+'px, '+e.clientY+'px)';
+    }, { passive:true });
+  }
+
+  /* tilt card */
+  var tiltCard = document.getElementById('tiltCard');
+  if(tiltCard && fine && !reduced){
+    tiltCard.addEventListener('mousemove', function(e){
+      var r = tiltCard.getBoundingClientRect();
+      var px = (e.clientX - r.left)/r.width - 0.5;
+      var py = (e.clientY - r.top)/r.height - 0.5;
+      tiltCard.style.transform = 'perspective(1000px) rotateY('+(px*16)+'deg) rotateX('+(-py*16)+'deg)';
+    });
+    tiltCard.addEventListener('mouseleave', function(){ tiltCard.style.transform=''; });
+  }
+
+  /* magnetic buttons */
+  if(fine && !reduced){
+    document.querySelectorAll('.magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width/2;
+        var y = e.clientY - r.top - r.height/2;
+        btn.style.transform = 'translate('+(x*0.22)+'px, '+(y*0.32)+'px)';
+      });
+      btn.addEventListener('mouseleave', function(){ btn.style.transform=''; });
+    });
+  }
+
+  /* spotlight cards */
+  if(fine && !reduced){
+    document.querySelectorAll('.spot-card').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--x', (e.clientX-r.left)+'px');
+        card.style.setProperty('--y', (e.clientY-r.top)+'px');
+      });
+    });
+  }
+
+  /* floating particles */
+  function spawnParticles(hostId, count){
+    var host = document.getElementById(hostId);
+    if(!host) return;
+    for(var i=0;i<count;i++){
+      var p = document.createElement('span');
+      p.className = 'particle';
+      p.style.left = (Math.random()*100).toFixed(1)+'%';
+      p.style.setProperty('--dur', (9+Math.random()*10).toFixed(1)+'s');
+      p.style.setProperty('--delay', (Math.random()*9).toFixed(1)+'s');
+      p.style.setProperty('--x', (Math.random()*60-30).toFixed(0)+'px');
+      var size = (6+Math.random()*9).toFixed(0);
+      p.style.width = size+'px';
+      p.style.height = size+'px';
+      host.appendChild(p);
+    }
+  }
+  if(!reduced){
+    spawnParticles('heroParticles', 16);
+    spawnParticles('resultsParticles', 12);
+  }
+
+  /* faq accordion */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-q').forEach(function(b){ b.setAttribute('aria-expanded','false'); });
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  /* legal panels */
+  document.querySelectorAll('[data-legal]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var key = this.getAttribute('data-legal');
+      document.querySelectorAll('.legal-panel').forEach(function(p){ p.classList.remove('show'); });
+      var panel = document.getElementById('panel-'+key);
+      if(panel){ panel.classList.add('show'); panel.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    });
+  });
+
+  /* contact form */
+  var form = document.getElementById('contactForm');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-loading');
+      fetch('https://formsubmit.co/ajax/kontakt@dariuszwresilo.pl', {
+        method:'POST',
+        body:new FormData(form),
+        headers:{ 'Accept':'application/json' }
+      }).then(function(res){
+        return res.json().then(function(data){
+          if(!res.ok || data.success===false || data.success==='false') throw new Error('send_failed');
+          document.getElementById('formMsg').classList.add('show');
+          form.reset();
+        });
+      }).catch(function(){
+        form.submit();
+      }).finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -14,6 +14,7 @@ Working directory: `/Users/darek/projekt ebook/moja www/`
 - **Hosting:** Netlify, podłączony do repo GitHub, auto-deploy przy każdym `git push` na `main` (~1-2 min)
 - **Domena:** dariuszwresilo.pl — DNS przez Netlify DNS (nameservery `dns1-4.p05.nsone.net`), status: **primary domain skonfigurowany i zweryfikowany** w Netlify (widać zielony ✓ Netlify DNS). Propagacja DNS była w toku, do sprawdzenia czy w pełni zakończona: `curl -sI https://dariuszwresilo.pl` — powinno pokazywać nagłówki Netlify, nie `server: Smarthost` (to byłby znak starego hostingu WordPress).
 - **Stary hosting WordPress** — nie został jeszcze usunięty przez zewnętrzną osobę, która go prowadziła. Do zrobienia po potwierdzeniu że Netlify w pełni przejęło ruch.
+- **Poczta e-mail:** skrzynki hostowane na Aftermarket (IMAP `imap.aftermarket.pl:993 SSL`, SMTP `smtp.aftermarket.pl:587 SSL`). Odbieranie poczty naprawione 2026-07-15 przez dodanie rekordu **MX** w Netlify DNS (NIE w panelu Aftermarket — DNS domeny nadal w 100% zarządzany przez Netlify, nie zmienialiśmy nameserverów): `dariuszwresilo.pl. MX 10 mx.aftermarket.pl.`, potwierdzone na serwerze autorytatywnym (`dig MX dariuszwresilo.pl @dns1.p05.nsone.net`). Uwaga na przyszłość: strona **NIE jest i nigdy nie była na GitHub Pages** — tylko GitHub repo + Netlify hosting. Ta pomyłka pojawiła się raz w zewnętrznym czacie i o mało nie doprowadziła do zdjęcia działającej strony.
 
 ### Ważne — autoryzacja Git
 
