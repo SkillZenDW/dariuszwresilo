@@ -22,14 +22,14 @@ gtag('config', 'G-LL1Z4GLF9W');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ekran nie musi wygrywać — 12 psychologicznych technik dla rodziców dzieci 6–15 lat</title>
-<meta name="description" content="Odciągnij dziecko od telefonu bez krzyku i awantur. Ebook + audiobook i kurs online — 12 technik opartych na psychologii, dla rodziców dzieci 6–15 lat.">
+<meta name="description" content="Odciągnij dziecko od telefonu bez krzyku i awantur. Ebook + audiobook + checklista — 12 naukowych technik dla rodziców dzieci 6–15 lat.">
 <link rel="canonical" href="https://dariuszwresilo.pl/ekrany/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:url" content="https://dariuszwresilo.pl/ekrany/">
 <meta property="og:title" content="Ekran nie musi wygrywać — 12 psychologicznych technik dla rodziców">
-<meta property="og:description" content="Odciągnij dziecko od telefonu bez krzyku i awantur. Ebook + audiobook i kurs online — 12 technik opartych na psychologii, dla rodziców dzieci 6–15 lat.">
-<meta property="og:image" content="https://dariuszwresilo.pl/ekrany/assets/img/poradnik-stol.png">
+<meta property="og:description" content="Odciągnij dziecko od telefonu bez krzyku i awantur. Ebook + audiobook + checklista — 12 naukowych technik dla rodziców dzieci 6–15 lat.">
+<meta property="og:image" content="https://dariuszwresilo.pl/ekrany/assets/img/hero-ekran1.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +45,9 @@ gtag('config', 'G-LL1Z4GLF9W');
   --orange:#E58B3D;
   --orange-deep:#C9701F;
   --leaf:#4E7A58;
+  --green:#3F8A5A;
+  --green-deep:#2E6B44;
+  --red:#C0392B;
   --line:#E2D6C4;
   --radius:18px;
   --display:'Bricolage Grotesque',system-ui,sans-serif;
@@ -94,18 +97,18 @@ p+p{margin-top:1em}
   text-align:center;border:none;cursor:pointer;
 }
 .btn-primary{
-  background:var(--orange);color:#2A1A05;
+  background:var(--green);color:#fff;
   padding:16px 34px;font-size:1.05rem;
-  box-shadow:0 6px 18px rgba(201,112,31,.35);
+  box-shadow:0 6px 18px rgba(46,107,68,.35);
 }
-.btn-primary:hover{background:var(--orange-deep);color:#fff;transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,112,31,.4)}
+.btn-primary:hover{background:var(--green-deep);color:#fff;transform:translateY(-2px);box-shadow:0 10px 24px rgba(46,107,68,.4)}
 .btn-outline{
   background:transparent;color:#F3EFE7;padding:14px 30px;font-size:.98rem;
   border:1.5px solid rgba(243,239,231,.5);
 }
 .btn-outline:hover{border-color:#F3EFE7;background:rgba(243,239,231,.08)}
-.btn-small{background:var(--orange);color:#2A1A05;padding:9px 20px;font-size:.9rem}
-.btn-small:hover{background:var(--orange-deep);color:#fff}
+.btn-small{background:var(--green);color:#fff;padding:9px 20px;font-size:.9rem}
+.btn-small:hover{background:var(--green-deep);color:#fff}
 .btn-note{display:block;margin-top:12px;font-size:.85rem;color:var(--ink-soft);font-style:italic}
 .dark .btn-note{color:#C7D3D6}
 .btn-full{width:100%}
@@ -141,7 +144,7 @@ p+p{margin-top:1em}
   box-shadow:0 3px 10px rgba(34,51,59,.06);max-width:480px;
 }
 .hero-stat{display:flex;flex-direction:column;gap:2px}
-.hero-stat-num{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--orange-deep);line-height:1}
+.hero-stat-num{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--red);line-height:1}
 .hero-stat-label{font-family:var(--display);font-weight:500;font-size:.74rem;color:var(--ink-soft);line-height:1.3}
 .hero-stat-divider{width:1px;align-self:stretch;background:var(--line)}
 @media (max-width:480px){
@@ -150,8 +153,9 @@ p+p{margin-top:1em}
 }
 .hero-cover{position:relative}
 .hero-cover img{
-  width:100%;height:auto;aspect-ratio:874/1240;object-fit:contain;
+  width:100%;height:auto;aspect-ratio:900/1342;object-fit:contain;
 }
+.mind h3 .mind-icon{margin-right:8px}
 .hero-badge{
   position:absolute;top:-14px;right:-14px;transform:rotate(6deg);
   background:var(--orange);color:#2A1A05;font-family:var(--display);font-weight:800;
@@ -232,18 +236,24 @@ p+p{margin-top:1em}
 .checklist-note{text-align:center;font-style:italic;color:var(--ink-soft);margin-top:26px}
 
 /* ---------- results ---------- */
-.results-list{display:grid;gap:0;margin:40px auto 34px;max-width:620px}
+.results-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.results-img img{border-radius:var(--radius);box-shadow:0 20px 50px rgba(0,0,0,.28)}
+.results-list{display:grid;gap:0;margin:32px 0 28px;max-width:620px}
 .results-list p{
-  font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,2.2vw,1.4rem);
-  padding:16px 0;border-bottom:1px solid rgba(243,239,231,.18);color:#F3EFE7;
+  font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,2vw,1.3rem);
+  padding:14px 0;border-bottom:1px solid rgba(243,239,231,.18);color:#F3EFE7;
 }
 .results-list p:last-child{border-bottom:none}
 .results-list p strong{color:var(--orange)}
-.results-caveat{color:#C7D3D6;font-size:.98rem;max-width:620px;margin:0 auto}
+.results-caveat{color:#C7D3D6;font-size:.98rem;max-width:620px}
+@media (max-width:900px){
+  .results-grid{grid-template-columns:1fr;gap:32px}
+  .results-img{max-width:320px;margin:0 auto}
+}
 
 /* ---------- pricing ---------- */
 .price-lead{text-align:center;max-width:680px;margin:0 auto 50px}
-.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;align-items:stretch;max-width:760px;margin-inline:auto}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;max-width:1040px;margin-inline:auto}
 .pcard{
   background:#fff;border:2px solid var(--line);border-radius:22px;
   padding:34px 28px;display:flex;flex-direction:column;position:relative;
@@ -260,7 +270,7 @@ p+p{margin-top:1em}
   text-transform:uppercase;color:var(--teal-deep);background:var(--cloud);padding:7px 14px;border-radius:999px;
   box-shadow:0 4px 12px rgba(34,51,59,.15);
 }
-.pcard img{width:100%;height:auto;aspect-ratio:760/1078;object-fit:cover;object-position:top center;border-radius:12px;margin-bottom:20px;box-shadow:0 10px 26px rgba(34,51,59,.16)}
+.pcard img{width:100%;height:auto;aspect-ratio:700/1043;object-fit:cover;object-position:top center;border-radius:12px;margin-bottom:20px;box-shadow:0 10px 26px rgba(34,51,59,.16)}
 .pcard h3{font-size:1.3rem;color:var(--teal);margin-bottom:8px}
 .pcard .desc{font-size:.94rem;color:var(--ink-soft);margin-bottom:18px;min-height:44px}
 .pcard .pricebox{margin:auto 0 20px}
@@ -325,6 +335,19 @@ details .answer{padding:0 24px 22px;color:var(--ink-soft);font-size:.99rem}
 .form-msg{margin-top:16px;font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--leaf);display:none}
 .form-msg.show{display:block}
 
+/* ---------- author ---------- */
+.author-card{
+  display:flex;gap:32px;align-items:center;max-width:760px;margin:0 auto;
+  background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px;
+  box-shadow:0 16px 40px rgba(34,51,59,.08);
+}
+.author-photo{width:140px;height:140px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 8px 20px rgba(34,51,59,.18)}
+.author-card h3{font-size:1.3rem;color:var(--teal);margin-bottom:10px}
+.author-card p{font-size:.96rem;color:var(--ink-soft)}
+@media (max-width:600px){
+  .author-card{flex-direction:column;text-align:center;padding:28px}
+}
+
 /* ---------- footer ---------- */
 footer{padding:0;background:var(--teal-deep);color:#C7D3D6}
 .footer-top{padding:52px 0 30px;border-bottom:1px solid rgba(243,239,231,.12)}
@@ -381,8 +404,8 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
     <div>
       <span class="hero-pill"><span class="dot"></span> Dostępne od razu — bez czekania</span>
       <h1>Odciągnij dziecko od telefonu <em>bez krzyku</em> i&nbsp;bez awantur.</h1>
-      <p class="lede">12 psychologicznych technik, które ustawiają sytuację tak, że dziecko <b>samo</b> odkłada ekran. Zacznij od kompletu <b>ebook + audiobook</b> — czytaj albo słuchaj, jak Ci wygodniej.</p>
-      <p class="unit">Komplet ebook + audiobook · dla dzieci 6–15 lat</p>
+      <p class="lede">12 psychologicznych, naukowych technik, które rozwiązują problem. Zamiast walczyć i prosić, ustawiają sytuację tak, że dziecko <b>samo</b> odkłada telefon.</p>
+      <p class="unit">Komplet ebook + audiobook + checklista · dla dzieci 6–15 lat</p>
       <div class="hero-formats">
         <span class="chip">📖 Ebook PDF</span>
         <span class="chip">🎧 Audiobook mp3</span>
@@ -391,24 +414,23 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="hero-stat-num">230+</span>
+          <span class="hero-stat-num">234+</span>
           <span class="hero-stat-label">godzin miesięcznie<br>dziecko przed telefonem</span>
         </div>
         <div class="hero-stat-divider"></div>
         <div class="hero-stat">
-          <span class="hero-stat-num">2 600 000</span>
+          <span class="hero-stat-num">2 580 000</span>
           <span class="hero-stat-label">dzieci w Polsce<br>codziennie w sieci</span>
         </div>
       </div>
       <a class="btn btn-primary btn-price" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">
-        <span class="btn-price-main">Zamawiam za 47 zł</span>
-        <span class="btn-price-old">zamiast 77 zł</span>
+        <span class="btn-price-main">Rozwiązanie za 37 zł</span>
+        <span class="btn-price-old">zamiast 64 zł osobno</span>
       </a>
-      <span class="btn-note">albo zobacz też kurs online (przedsprzedaż) niżej ↓</span>
     </div>
     <div class="hero-cover">
-      <span class="hero-badge">−39%</span>
-      <img src="assets/img/hero-mockup.png" alt="Okładka książki „Ekran nie musi wygrywać — 12 psychologicznych trików, jak odciągnąć dziecko od ekranu”" width="874" height="1240">
+      <span class="hero-badge">−42%</span>
+      <img src="assets/img/hero-ekran1.jpg" alt="Okładka książki „Ekran nie musi wygrywać — 12 psychologicznych trików, jak odciągnąć dziecko od ekranu”" width="900" height="1342">
     </div>
   </div>
 </header>
@@ -439,12 +461,12 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
     <div class="minds">
       <div class="mind mind-fast reveal">
         <span class="tag">Ten sięga po telefon</span>
-        <h3>Szybki i emocjonalny</h3>
+        <h3><span class="mind-icon">⚡</span>Szybki i emocjonalny</h3>
         <p>Działa błyskawicznie, bez zastanowienia. Zawsze wybiera to, co łatwe i przyjemne tu i teraz. Wyciąga rękę po ekran, zanim dziecko w ogóle pomyśli. <b>Nie słucha argumentów.</b></p>
       </div>
       <div class="mind mind-slow reveal">
         <span class="tag">Do tego mówisz Ty</span>
-        <h3>Mądry i rozsądny</h3>
+        <h3><span class="mind-icon">🦉</span>Mądry i rozsądny</h3>
         <p>Rozumie, że sen jest ważny, że warto odrobić lekcje, że życie to nie tylko ekran. Ale jest <b>wolny, szybko się męczy</b> — i w chwili, gdy prosisz o odłożenie telefonu, w ogóle nie ma go przy głosie.</p>
       </div>
     </div>
@@ -512,18 +534,23 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
 
 <!-- RESULTS -->
 <section class="section dark">
-  <div class="wrap narrow" style="text-align:center">
-    <span class="eyebrow reveal">Co się zmienia</span>
-    <h2 class="reveal" style="color:#F3EFE7">Rodzice opisują ten sam schemat —<br>już po 2–3 tygodniach.</h2>
-    <div class="results-list">
-      <p class="reveal">Dziecko <strong>lepiej sypia.</strong></p>
-      <p class="reveal">Rzadziej wybucha bez powodu.</p>
-      <p class="reveal">Wraca do rzeczy, o których zapomniało, że lubi.</p>
-      <p class="reveal">Łatwiej siada do lekcji.</p>
-      <p class="reveal">W domu jest ciszej — bo <strong>znika codzienna walka.</strong></p>
+  <div class="wrap results-grid">
+    <div class="results-img reveal">
+      <img src="assets/img/dziecko-wynik.jpg" alt="Uśmiechnięte dziecko, wolne od ekranu — efekt zastosowania technik z poradnika „Ekran nie musi wygrywać”" width="700" height="753">
     </div>
-    <p class="parent-payoff reveal">A Ty? Wieczorem nie szykujesz się już do <strong>kolejnej rundy.</strong> Siadacie przy stole i po prostu — jest cicho.</p>
-    <p class="results-caveat reveal">To nie obietnica cudu. To po prostu to, co dzieje się najczęściej, gdy dziecko odzyskuje przestrzeń poza ekranem — a rodzic przestaje walczyć siłą i zaczyna działać mądrze.</p>
+    <div>
+      <span class="eyebrow reveal">Co się zmienia</span>
+      <h2 class="reveal" style="color:#F3EFE7">Rodzice opisują ten sam schemat —<br>już po 2–3 tygodniach.</h2>
+      <div class="results-list">
+        <p class="reveal">Dziecko <strong>lepiej sypia.</strong></p>
+        <p class="reveal">Rzadziej wybucha bez powodu.</p>
+        <p class="reveal">Wraca do rzeczy, o których zapomniało, że lubi.</p>
+        <p class="reveal">Łatwiej siada do lekcji.</p>
+        <p class="reveal">W domu jest ciszej — bo <strong>znika codzienna walka.</strong></p>
+      </div>
+      <p class="parent-payoff reveal">A Ty? Wieczorem nie szykujesz się już do <strong>kolejnej rundy.</strong> Siadacie przy stole i po prostu — jest cicho.</p>
+      <p class="results-caveat reveal" style="margin-top:18px">To nie obietnica cudu. To po prostu to, co dzieje się najczęściej, gdy dziecko odzyskuje przestrzeń poza ekranem — a rodzic przestaje walczyć siłą i zaczyna działać mądrze.</p>
+    </div>
   </div>
 </section>
 
@@ -532,53 +559,66 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
   <div class="wrap">
     <div class="price-lead">
       <span class="eyebrow reveal">Wybierz swój format</span>
-      <h2 class="reveal">Dwa sposoby, żeby zacząć — Ty wybierasz, jak głęboko wchodzisz.</h2>
-      <p class="reveal" style="margin-top:14px;color:var(--ink-soft)">Kurs on-line jest w przedsprzedaży — rezerwujesz miejsce teraz, po cenie niższej niż w dniu startu.</p>
+      <h2 class="reveal">Trzy sposoby, żeby zacząć — Ty wybierasz swój format.</h2>
     </div>
 
     <div class="price-grid">
 
-      <!-- KURS ONLINE -->
+      <!-- EBOOK + CHECKLISTA -->
       <div class="pcard reveal">
-        <span class="presale">Przedsprzedaż</span>
-        <img src="assets/img/monitor-kurs.png" alt="Kurs on-line „Ekran nie musi wygrywać” na tablecie i telefonie" width="760" height="1078">
-        <h3>Kurs on-line</h3>
-        <p class="desc">4 godziny video i audio — techniki pokazane krok po kroku, z ćwiczeniami do wdrożenia w Twoim domu. To mniej, niż kosztuje jedna wizyta u specjalisty — a zostaje z Tobą na zawsze.</p>
+        <img src="assets/img/produkt-ebook.jpg" alt="Ebook „Ekran nie musi wygrywać” na tablecie, w formacie PDF i EPUB" width="700" height="1043">
+        <h3>Ebook + Checklista</h3>
+        <p class="desc">Czytaj wieczorem, w telefonie, tablecie lub na czytniku. Format PDF i EPUB w jednym zakupie.</p>
         <div class="pricebox">
-          <div class="old-price">577 zł</div>
-          <div class="now-price">297 zł</div>
-          <div class="save-badge">Oszczędzasz 280 zł (−49%)</div>
+          <div class="now-price">27 zł</div>
         </div>
         <ul>
-          <li>14 modułów video (4h łącznie)</li>
-          <li><strong>Bonus:</strong> karty z gotowymi zdaniami do wydruku — powieś na lodówce</li>
-          <li>Dostęp na zawsze, oglądasz w swoim tempie</li>
-          <li>Cena przedsprzedażowa — rośnie po starcie</li>
-        </ul>
-        <a class="btn btn-primary btn-full" href="#kontakt">Rezerwuję miejsce — 297 zł</a>
-        <p class="premiere-note">Cena premierowa — obowiązuje w okresie przedsprzedaży.</p>
-        <p class="guarantee-note"><strong>Gwarancja bezpiecznego startu:</strong> nie spodoba się po starcie kursu? Napisz w ciągu 14 dni od uruchomienia — zwracam całość.</p>
-      </div>
-
-      <!-- EBOOK + AUDIOBOOK (polecane) -->
-      <div class="pcard featured reveal">
-        <span class="ribbon">Polecane · start tutaj</span>
-        <img src="assets/img/audiobook-cover.png" alt="Komplet ebook i audiobook „Ekran nie musi wygrywać” na tablecie i telefonie" width="760" height="1078">
-        <h3>Ebook + Audiobook</h3>
-        <p class="desc">Czytaj wieczorem albo słuchaj w drodze do pracy. Dostęp od razu — zaczynasz jeszcze dziś.</p>
-        <div class="pricebox">
-          <div class="old-price">77 zł</div>
-          <div class="now-price">47 zł</div>
-          <div class="save-badge">Oszczędzasz 30 zł (−39%)</div>
-        </div>
-        <ul>
-          <li>Ebook PDF — 72 strony, do druku lub na ekran</li>
-          <li>Audiobook mp3 — słuchasz w aucie, na spacerze</li>
+          <li>Ebook — 72 strony, format PDF + EPUB</li>
           <li>Checklist dla rodziców — do wydruku</li>
           <li>Dostęp natychmiast po zakupie</li>
-          <li>Najniższy próg wejścia — zacznij tu, dołóż resztę później</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">Zamawiam za 47 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-ebook-checklista-fo1" target="_blank" rel="noopener">Zamawiam za 27 zł</a>
+        <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
+        <p class="guarantee-note"><strong>Wypróbuj bez ryzyka:</strong> jeśli żadna z technik nie zadziała w Twoim domu w ciągu 14 dni, napisz — zwracam pieniądze.</p>
+      </div>
+
+      <!-- AUDIOBOOK + CHECKLISTA -->
+      <div class="pcard reveal">
+        <img src="assets/img/produkt-audiobook.jpg" alt="Audiobook „Ekran nie musi wygrywać” odtwarzany w telefonie ze słuchawkami" width="700" height="1043">
+        <h3>Audiobook + Checklista</h3>
+        <p class="desc">Słuchaj w aucie, na spacerze albo przy sprzątaniu — bez czasu na czytanie też dasz radę zacząć.</p>
+        <div class="pricebox">
+          <div class="now-price">37 zł</div>
+        </div>
+        <ul>
+          <li>Audiobook mp3 — pełne nagranie</li>
+          <li>Checklist dla rodziców — do wydruku</li>
+          <li>Dostęp natychmiast po zakupie</li>
+        </ul>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-audiobook-checklista-jsz" target="_blank" rel="noopener">Zamawiam za 37 zł</a>
+        <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
+        <p class="guarantee-note"><strong>Wypróbuj bez ryzyka:</strong> jeśli żadna z technik nie zadziała w Twoim domu w ciągu 14 dni, napisz — zwracam pieniądze.</p>
+      </div>
+
+      <!-- EBOOK + AUDIOBOOK + CHECKLISTA (polecane) -->
+      <div class="pcard featured reveal">
+        <span class="ribbon">Polecane · najlepsza wartość</span>
+        <img src="assets/img/produkt-bundle.jpg" alt="Komplet ebook i audiobook „Ekran nie musi wygrywać” na tablecie i telefonie" width="700" height="1043">
+        <h3>Ebook + Audiobook + Checklista</h3>
+        <p class="desc">Czytaj wieczorem albo słuchaj w drodze do pracy. Wszystko w jednym komplecie, w cenie samego audiobooka.</p>
+        <div class="pricebox">
+          <div class="old-price">64 zł</div>
+          <div class="now-price">37 zł</div>
+          <div class="save-badge">Oszczędzasz 27 zł (−42%)</div>
+        </div>
+        <ul>
+          <li>Ebook — 72 strony, format PDF + EPUB</li>
+          <li>Audiobook mp3 — pełne nagranie</li>
+          <li>Checklist dla rodziców — do wydruku</li>
+          <li>Dostęp natychmiast po zakupie</li>
+          <li><strong>Najlepsza wartość</strong> — komplet w cenie jednego formatu</li>
+        </ul>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">Rozwiązanie za 37 zł</a>
         <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
         <p class="guarantee-note"><strong>Wypróbuj bez ryzyka:</strong> jeśli żadna z technik nie zadziała w Twoim domu w ciągu 14 dni, napisz — zwracam pieniądze.</p>
       </div>
@@ -602,12 +642,8 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
         <div class="answer">Materiał jest napisany pod cały przedział 6–15 lat — z uwzględnieniem, że starsze dzieci reagują inaczej: mocniej na presję grupy rówieśniczej i na potrzebę bycia traktowanym poważnie. Każda technika ma wskazówkę, jak dopasować ją do wieku dziecka.</div>
       </details>
       <details class="reveal">
-        <summary>Który format wybrać: ebook czy kurs?</summary>
-        <div class="answer">Jeśli chcesz zacząć dziś wieczorem — wybierz ebook + audiobook (47 zł), masz dostęp natychmiast. Jeśli wolisz zobaczyć techniki „na żywo" i mieć ćwiczenia do wdrożenia krok po kroku — kurs on-line (297 zł w przedsprzedaży). Można też wybrać oba formaty naraz.</div>
-      </details>
-      <details class="reveal">
-        <summary>Co znaczy „przedsprzedaż" przy kursie?</summary>
-        <div class="answer">Rezerwujesz swoje miejsce po cenie niższej niż ta, która będzie obowiązywać po starcie. Kurs jest w przygotowaniu — dostęp nastąpi w najbliższym czasie, o czym poinformujemy mailowo.</div>
+        <summary>Który format wybrać: ebook, audiobook czy oba?</summary>
+        <div class="answer">Jeśli lubisz czytać wieczorem — wybierz ebook (27 zł, PDF + EPUB). Jeśli wolisz słuchać w aucie albo na spacerze — audiobook (37 zł). Najwięcej dostajesz w komplecie ebook + audiobook + checklista (37 zł) — to ta sama cena co sam audiobook, ale z dwoma formatami naraz.</div>
       </details>
     </div>
   </div>
@@ -623,12 +659,12 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
     <p class="clamp reveal">Ekran nie musi wygrywać.<br><strong>I od dziś — nie musi.</strong></p>
     <div class="final-ctas">
       <a class="btn btn-primary reveal" href="#pakiety">Wybieram swój pakiet</a>
-      <a class="btn btn-outline reveal" href="#kontakt">Zostaw kontakt</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT FORM -->
+<!-- CONTACT FORM — schowana na życzenie (do przywrócenia: usuń komentarz poniżej) -->
+<!--
 <section class="section" id="kontakt">
   <div class="wrap narrow">
     <div style="text-align:center;margin-bottom:36px">
@@ -663,6 +699,21 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
     </div>
   </div>
 </section>
+-->
+
+<!-- AUTHOR -->
+<section class="section alt" id="autor">
+  <div class="wrap">
+    <div class="author-card reveal">
+      <img class="author-photo" src="assets/img/autor-dariusz.jpg" alt="Dariusz Wresiło" width="140" height="140">
+      <div>
+        <span class="eyebrow">O autorze</span>
+        <h3>Dariusz Wresiło</h3>
+        <p>Trener mentalny, szkoleniowiec, autor rozwojowych książek i poradników z zakresu wpływu, psychologii i świadomości. Od 14 lat zajmuje się pracą z emocjami, psychiką i podświadomością. Szczególnie interesuje się tematem uzależnień i psychologią zachowań człowieka.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -670,17 +721,17 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
     <div class="wrap footer-grid">
       <div>
         <div class="footer-brand">Ekran nie musi <span>wygrywać.</span></div>
-        <p style="font-size:.9rem;max-width:340px;color:#AEBDC1">12 psychologicznych technik dla rodziców dzieci 6–15 lat. Ebook, audiobook i kurs on-line.</p>
+        <p style="font-size:.9rem;max-width:340px;color:#AEBDC1">12 psychologicznych technik dla rodziców dzieci 6–15 lat. Ebook, audiobook i checklista.</p>
         <p style="font-size:.82rem;max-width:340px;color:#7E9096;margin-top:16px;line-height:1.7">SkillZen Dariusz Wresiło<br>NIP 7382034650 · REGON 123122564<br><a href="mailto:kontakt@dariuszwresilo.pl" style="color:#AEBDC1">kontakt@dariuszwresilo.pl</a></p>
       </div>
       <div class="footer-col">
         <h4>Produkty</h4>
-        <a href="#pakiety">Kurs on-line — 297 zł</a>
-        <a href="#pakiety">Ebook + Audiobook — 47 zł</a>
+        <a href="#pakiety">Ebook + Checklista — 27 zł</a>
+        <a href="#pakiety">Audiobook + Checklista — 37 zł</a>
+        <a href="#pakiety">Ebook + Audiobook + Checklista — 37 zł</a>
       </div>
       <div class="footer-col">
         <h4>Informacje</h4>
-        <a href="#kontakt">Kontakt</a>
         <a href="#regulamin" data-legal="regulamin">Regulamin</a>
         <a href="#panel-polityka" data-legal="polityka">Polityka prywatności</a>
         <a href="#" class="cookie-settings-link">Ustawienia cookies</a>
