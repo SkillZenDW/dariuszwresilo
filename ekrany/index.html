@@ -423,7 +423,7 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
           <span class="hero-stat-label">dzieci w Polsce<br>codziennie w sieci</span>
         </div>
       </div>
-      <a class="btn btn-primary btn-price" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">
+      <a class="btn btn-primary btn-price" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener" onclick="trackCheckout('Ebook + Audiobook + Checklista', 37)">
         <span class="btn-price-main">Rozwiązanie za 37 zł</span>
         <span class="btn-price-old">zamiast 64 zł osobno</span>
       </a>
@@ -577,7 +577,7 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
           <li>Checklist dla rodziców — do wydruku</li>
           <li>Dostęp natychmiast po zakupie</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-ebook-checklista-fo1" target="_blank" rel="noopener">Zamawiam za 27 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-ebook-checklista-fo1" target="_blank" rel="noopener" onclick="trackCheckout('Ebook + Checklista', 27)">Zamawiam za 27 zł</a>
         <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
         <p class="guarantee-note"><strong>Wypróbuj bez ryzyka:</strong> jeśli żadna z technik nie zadziała w Twoim domu w ciągu 14 dni, napisz — zwracam pieniądze.</p>
       </div>
@@ -595,7 +595,7 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
           <li>Checklist dla rodziców — do wydruku</li>
           <li>Dostęp natychmiast po zakupie</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-audiobook-checklista-jsz" target="_blank" rel="noopener">Zamawiam za 37 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-audiobook-checklista-jsz" target="_blank" rel="noopener" onclick="trackCheckout('Audiobook + Checklista', 37)">Zamawiam za 37 zł</a>
         <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
         <p class="guarantee-note"><strong>Wypróbuj bez ryzyka:</strong> jeśli żadna z technik nie zadziała w Twoim domu w ciągu 14 dni, napisz — zwracam pieniądze.</p>
       </div>
@@ -618,7 +618,7 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
           <li>Dostęp natychmiast po zakupie</li>
           <li><strong>Najlepsza wartość</strong> — komplet w cenie jednego formatu</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener">Rozwiązanie za 37 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/ekran-nie-musi-wygrywac-sgd" target="_blank" rel="noopener" onclick="trackCheckout('Ebook + Audiobook + Checklista', 37)">Rozwiązanie za 37 zł</a>
         <p class="premiere-note">Cena premierowa — obowiązuje od wprowadzenia produktu do sprzedaży.</p>
         <p class="guarantee-note"><strong>Wypróbuj bez ryzyka:</strong> jeśli żadna z technik nie zadziała w Twoim domu w ciągu 14 dni, napisz — zwracam pieniądze.</p>
       </div>
@@ -896,6 +896,14 @@ a:focus-visible,summary:focus-visible,.btn:focus-visible{outline:3px solid var(-
     gtag('consent', 'update', { 'analytics_storage': 'granted' });
     loadMetaPixel();
   }
+
+  // śledzenie kliknięć w przyciski zamówienia — event InitiateCheckout (nie Purchase:
+  // płatność dzieje się na naffy.io, ta strona nie wie, czy zakup faktycznie się udał)
+  window.trackCheckout = function(name, value){
+    if(typeof fbq === 'function'){
+      fbq('track', 'InitiateCheckout', { content_name: name, currency: 'PLN', value: value });
+    }
+  };
   if(!cookieConsent){
     setTimeout(function(){ cookieBanner.classList.add('is-visible'); }, 800);
   } else if(cookieConsent === 'granted'){
