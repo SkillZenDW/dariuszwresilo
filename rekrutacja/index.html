@@ -618,7 +618,7 @@
 
   <div class="cc-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Ustawienia plików cookie">
     <div class="cc-banner-inner">
-      <p><strong>Niezbędne</strong> pliki cookie są zawsze aktywne (działanie strony). <strong>Opcjonalne</strong> — Google Analytics i Meta Pixel, do analizy ruchu i pomiaru skuteczności reklam — włączają się wyłącznie za Twoją zgodą. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
+      <p><strong>Niezbędne</strong> pliki cookie są zawsze aktywne (działanie strony). <strong>Opcjonalne</strong> — Google Analytics, Microsoft Clarity i Meta Pixel, do analizy ruchu i pomiaru skuteczności reklam — włączają się wyłącznie za Twoją zgodą. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
       <div class="cc-banner-actions">
         <button type="button" class="cc-btn cc-btn-outline" id="cookieNecessaryOnly">Tylko niezbędne</button>
         <button type="button" class="cc-btn cc-btn-accent" id="cookieAcceptAll">Akceptuję wszystkie</button>
@@ -653,9 +653,18 @@
       fbq('init', pixelId);
       fbq('track', 'PageView');
     }
+    function loadClarity(){
+      if(window.clarity) return;
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "z472dy9i2h");
+    }
     function grantOptionalCookies(){
       gtag('consent', 'update', { 'analytics_storage': 'granted' });
       loadMetaPixel();
+      loadClarity();
     }
     if(!cookieConsent){
       setTimeout(function(){ cookieBanner.classList.add('is-visible'); }, 800);

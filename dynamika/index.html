@@ -781,7 +781,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
       <p>Każda osoba ma prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu wobec przetwarzania, a także prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych. W celu realizacji tych praw prosimy o kontakt na adres kontakt@dariuszwresilo.pl.</p>
 
       <p style="color:#F2ECDC;font-weight:600">§7. Pliki cookies</p>
-      <p>Strona wykorzystuje pliki cookies niezbędne do jej działania (zawsze aktywne) oraz — wyłącznie po wyrażeniu zgody w banerze cookies — pliki analityczne (Google Analytics) i marketingowe (Meta Pixel), służące do analizy ruchu i pomiaru skuteczności reklam. Zgodę można w każdej chwili wycofać lub zmienić poprzez link „Ustawienia cookies" w stopce strony.</p>
+      <p>Strona wykorzystuje pliki cookies niezbędne do jej działania (zawsze aktywne) oraz — wyłącznie po wyrażeniu zgody w banerze cookies — pliki analityczne (Google Analytics, Microsoft Clarity) i marketingowe (Meta Pixel), służące do analizy ruchu i pomiaru skuteczności reklam. Zgodę można w każdej chwili wycofać lub zmienić poprzez link „Ustawienia cookies" w stopce strony.</p>
 
       <p style="color:#8FA3A8;font-style:italic;margin-top:14px">Ostatnia aktualizacja: 2026. W sprawach dotyczących ochrony danych osobowych napisz na kontakt@dariuszwresilo.pl.</p>
     </div>
@@ -869,7 +869,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
 
 <div class="cc-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Ustawienia plików cookie">
   <div class="cc-banner-inner">
-    <p><strong>Niezbędne</strong> pliki cookie są zawsze aktywne (działanie strony i formularzy). <strong>Opcjonalne</strong> — Google Analytics i Meta Pixel, do analizy ruchu i pomiaru skuteczności reklam — włączają się wyłącznie za Twoją zgodą. Więcej w <a href="#polityka" data-legal="polityka">polityce prywatności</a>.</p>
+    <p><strong>Niezbędne</strong> pliki cookie są zawsze aktywne (działanie strony i formularzy). <strong>Opcjonalne</strong> — Google Analytics, Microsoft Clarity i Meta Pixel, do analizy ruchu i pomiaru skuteczności reklam — włączają się wyłącznie za Twoją zgodą. Więcej w <a href="#polityka" data-legal="polityka">polityce prywatności</a>.</p>
     <div class="cc-banner-actions">
       <button type="button" class="cc-btn cc-btn-outline" id="cookieNecessaryOnly">Tylko niezbędne</button>
       <button type="button" class="cc-btn cc-btn-accent" id="cookieAcceptAll">Akceptuję wszystkie</button>
@@ -904,9 +904,18 @@ footer{background:var(--navy-deep);color:#C7D3D6}
     fbq('init', pixelId);
     fbq('track', 'PageView');
   }
+  function loadClarity(){
+    if(window.clarity) return;
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "z472dy9i2h");
+  }
   function grantOptionalCookies(){
     gtag('consent', 'update', { 'analytics_storage': 'granted' });
     loadMetaPixel();
+    loadClarity();
   }
   if(!cookieConsent){
     setTimeout(function(){ cookieBanner.classList.add('is-visible'); }, 800);
