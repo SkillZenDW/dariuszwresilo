@@ -375,7 +375,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
           <span class="hero-stat-label">ludzi żyje poniżej poziomu Odwagi (wg badań D.R. Hawkinsa)</span>
         </div>
       </div>
-      <a class="btn btn-primary btn-price" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)">
+      <a class="btn btn-primary btn-price" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)" onclick="trackCheckout('Dynamika — Ebook + Audiobook', 47)">
         <span class="btn-price-main">Zamawiam za 47 zł</span>
         <span class="btn-price-old">zamiast 77 zł</span>
       </a>
@@ -563,7 +563,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
           <li>6 dwustronnych, złoconych Kart Świadomości — noś je przy sobie</li>
           <li>Wysyłka kurierem w 3–5 dni roboczych</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Książka — pełny komplet (97 zł)">Zamawiam komplet — 97 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Książka — pełny komplet (97 zł)" onclick="trackCheckout('Dynamika — komplet', 97)">Zamawiam komplet — 97 zł</a>
       </div>
 
       <!-- EBOOK + AUDIOBOOK -->
@@ -584,7 +584,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
           <li>Dostęp natychmiast po zakupie</li>
           <li>Najniższy próg wejścia — zacznij tu, dołóż komplet papierowy później</li>
         </ul>
-        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)">Zamawiam za 47 zł</a>
+        <a class="btn btn-primary btn-full" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)" onclick="trackCheckout('Dynamika — Ebook + Audiobook', 47)">Zamawiam za 47 zł</a>
       </div>
 
     </div>
@@ -658,7 +658,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
       <cite>— Dariusz Wresiło</cite>
     </div>
     <div class="reveal" style="margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-primary" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)">Zamawiam ebook + audiobook — 47 zł</a>
+      <a class="btn btn-primary" href="https://www.naffy.io/dariusz-wresilo/dynamika-pozomow-swiadomosci-mip" target="_blank" rel="noopener" data-product="Ebook + Audiobook (47 zł)" onclick="trackCheckout('Dynamika — Ebook + Audiobook', 47)">Zamawiam ebook + audiobook — 47 zł</a>
       <a class="btn btn-ghost" href="#pakiety">Zobacz pełny komplet — 97 zł</a>
     </div>
   </div>
@@ -903,6 +903,7 @@ footer{background:var(--navy-deep);color:#C7D3D6}
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', pixelId);
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
   }
   function loadClarity(){
     if(window.clarity) return;
@@ -917,6 +918,13 @@ footer{background:var(--navy-deep);color:#C7D3D6}
     loadMetaPixel();
     loadClarity();
   }
+
+  // śledzenie kliknięć w przyciski zamówienia — event InitiateCheckout
+  window.trackCheckout = function(name, value){
+    if(typeof fbq === 'function'){
+      fbq('track', 'InitiateCheckout', { content_name: name, currency: 'PLN', value: value });
+    }
+  };
   if(!cookieConsent){
     setTimeout(function(){ cookieBanner.classList.add('is-visible'); }, 800);
   } else if(cookieConsent === 'granted'){
@@ -933,6 +941,24 @@ footer{background:var(--navy-deep);color:#C7D3D6}
   });
   document.querySelectorAll('.cookie-settings-link').forEach(function(link){
     link.addEventListener('click', function(e){ e.preventDefault(); cookieBanner.classList.add('is-visible'); });
+  });
+})();
+</script>
+<script>
+(function(){
+  // przekazuje parametry UTM i fbclid z adresu strony do linków zakupowych (naffy.io),
+  // żeby panel sprzedaży widział, z jakiej reklamy przyszedł klient
+  var params = new URLSearchParams(window.location.search);
+  var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
+  var utm = new URLSearchParams();
+  keys.forEach(function(k){ var v = params.get(k); if(v) utm.set(k, v); });
+  if(!utm.toString()) return;
+  document.querySelectorAll('a[href*="naffy.io"]').forEach(function(link){
+    try{
+      var url = new URL(link.href);
+      utm.forEach(function(v,k){ url.searchParams.set(k, v); });
+      link.href = url.toString();
+    }catch(e){}
   });
 })();
 </script>

@@ -43,7 +43,7 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="site-header__logo" href="#hero">Rekrutacja. <span>To jest proste.</span></a>
-      <a class="btn btn--primary btn--sm site-header__cta" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener">Pobierz za 47</a>
+      <a class="btn btn--primary btn--sm site-header__cta" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener" onclick="trackCheckout('Rekrutacja — raport', 47)">Pobierz za 47</a>
     </div>
   </header>
 
@@ -78,7 +78,7 @@
           <p class="hero__premiere-note">Cena premierowa — obowiązuje od wprowadzenia raportu do sprzedaży.</p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary magnetic" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener">Pobierz za 47</a>
+            <a class="btn btn--primary magnetic" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener" onclick="trackCheckout('Rekrutacja — raport', 47)">Pobierz za 47</a>
             <a class="btn btn--secondary magnetic" href="#pytania">Zobacz przykładowe pytania (w skrócie)</a>
           </div>
 
@@ -460,7 +460,7 @@
               <li>Bez limitu liczby rekrutacji w Twojej firmie</li>
               <li>Dostęp do pobrania od razu po zaksięgowaniu płatności</li>
             </ul>
-            <a class="btn btn--primary btn--block magnetic" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener">Kup teraz za 47 zł</a>
+            <a class="btn btn--primary btn--block magnetic" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener" onclick="trackCheckout('Rekrutacja — raport', 47)">Kup teraz za 47 zł</a>
             <p class="price-card__fineprint">
               Cena premierowa — obowiązuje od wprowadzenia raportu do sprzedaży.
               Płatność jednorazowa za treści cyfrowe. Kupując, wyrażasz zgodę
@@ -578,7 +578,7 @@
             Pobierz raport i kartę oceny, i zadaj właściwe pytania jeszcze
             podczas najbliższej rekrutacji.
           </p>
-          <a class="btn btn--primary magnetic" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener">Pobierz komplet za 47 zł</a>
+          <a class="btn btn--primary magnetic" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener" onclick="trackCheckout('Rekrutacja — raport', 47)">Pobierz komplet za 47 zł</a>
         </div>
       </div>
     </section>
@@ -613,7 +613,7 @@
   <!-- ==================== STICKY MOBILE CTA ==================== -->
   <div class="sticky-cta" role="complementary" aria-label="Szybki zakup">
     <span class="sticky-cta__price"><small>77 zł</small>47 zł</span>
-    <a class="btn btn--primary btn--sm" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener">Kup teraz</a>
+    <a class="btn btn--primary btn--sm" href="https://www.naffy.io/dariusz-wresilo/rekrutacja-to-jest-proste-gwb" target="_blank" rel="noopener" onclick="trackCheckout('Rekrutacja — raport', 47)">Kup teraz</a>
   </div>
 
   <div class="cc-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Ustawienia plików cookie">
@@ -652,6 +652,7 @@
       document,'script','https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', pixelId);
       fbq('track', 'PageView');
+      fbq('track', 'ViewContent');
     }
     function loadClarity(){
       if(window.clarity) return;
@@ -666,6 +667,13 @@
       loadMetaPixel();
       loadClarity();
     }
+
+    // śledzenie kliknięć w przyciski zamówienia — event InitiateCheckout
+    window.trackCheckout = function(name, value){
+      if(typeof fbq === 'function'){
+        fbq('track', 'InitiateCheckout', { content_name: name, currency: 'PLN', value: value });
+      }
+    };
     if(!cookieConsent){
       setTimeout(function(){ cookieBanner.classList.add('is-visible'); }, 800);
     } else if(cookieConsent === 'granted'){
@@ -687,5 +695,23 @@
   </script>
 
   <script src="main.js"></script>
+  <script>
+  (function(){
+    // przekazuje parametry UTM i fbclid z adresu strony do linków zakupowych (naffy.io),
+    // żeby panel sprzedaży widział, z jakiej reklamy przyszedł klient
+    var params = new URLSearchParams(window.location.search);
+    var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
+    var utm = new URLSearchParams();
+    keys.forEach(function(k){ var v = params.get(k); if(v) utm.set(k, v); });
+    if(!utm.toString()) return;
+    document.querySelectorAll('a[href*="naffy.io"]').forEach(function(link){
+      try{
+        var url = new URL(link.href);
+        utm.forEach(function(v,k){ url.searchParams.set(k, v); });
+        link.href = url.toString();
+      }catch(e){}
+    });
+  })();
+  </script>
 </body>
 </html>

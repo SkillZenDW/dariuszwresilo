@@ -941,6 +941,7 @@ function loadMetaPixel(){
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', pixelId);
   fbq('track', 'PageView');
+  fbq('track', 'ViewContent');
 }
 
 function loadClarity(){
@@ -975,6 +976,25 @@ document.getElementById('cookieNecessaryOnly').addEventListener('click', ()=>{
 document.querySelectorAll('.cookie-settings-link').forEach(function(link){
   link.addEventListener('click', function(e){ e.preventDefault(); cookieBanner.classList.add('is-visible'); });
 });
+</script>
+
+<script>
+(function(){
+  // przekazuje parametry UTM i fbclid z adresu strony do linków zakupowych (naffy.io),
+  // żeby panel sprzedaży widział, z jakiej reklamy przyszedł klient
+  var params = new URLSearchParams(window.location.search);
+  var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
+  var utm = new URLSearchParams();
+  keys.forEach(function(k){ var v = params.get(k); if(v) utm.set(k, v); });
+  if(!utm.toString()) return;
+  document.querySelectorAll('a[href*="naffy.io"]').forEach(function(link){
+    try{
+      var url = new URL(link.href);
+      utm.forEach(function(v,k){ url.searchParams.set(k, v); });
+      link.href = url.toString();
+    }catch(e){}
+  });
+})();
 </script>
 
 </body>
